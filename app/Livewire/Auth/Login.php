@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Auth;
 
-use Illuminate\Contracts\View\{Factory, View};
+use Illuminate\Contracts\View\{View};
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -20,6 +20,8 @@ class Login extends Component
     public function tryToLogin(): void
     {
         if(!Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+
+            $this->addError('invalidCredentials', trans('auth.failed'));
 
             return;
         }
