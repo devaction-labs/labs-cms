@@ -15,6 +15,9 @@ class AuthServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Gate::define('be-an-admin', fn (User $user) => $user->hasPermissionTo('be an admin'));
+        Gate::define(
+            'be-an-admin',
+            fn (User $user) => $user->hasPermissionTo('be an admin')
+        );
     }
 }
