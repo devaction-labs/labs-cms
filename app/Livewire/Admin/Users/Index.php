@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Users;
 
 use App\Enum\Can;
 use App\Models\{Permission, User};
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\{Builder, Collection};
 use Illuminate\Support\Facades\DB;
@@ -28,6 +29,8 @@ class Index extends Component
 
     public string $sortColumnBy = 'id';
 
+    public int $perPage = 15;
+
     public function mount(): void
     {
         $this->authorize(Can::BE_AN_ADMIN->value);
@@ -40,7 +43,7 @@ class Index extends Component
     }
 
     #[Computed]
-    public function users(): Collection
+    public function users(): LengthAwarePaginator
     {
         $this->validate(['search_permissions' => 'exists:permissions,id']);
 
@@ -70,7 +73,7 @@ class Index extends Component
                 fn (Builder $q) => $q->onlyTrashed()/** @phpstan-ignore-line */
             )
             ->orderBy($this->sortColumnBy, $this->sortDirection)
-            ->get();
+            ->paginate($this->perPage);
     }
 
     #[Computed]
