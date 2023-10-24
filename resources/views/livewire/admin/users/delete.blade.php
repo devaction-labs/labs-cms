@@ -1,3 +1,8 @@
 <div>
-    {{-- Be like water. --}}
+    <button wire:click="$set('modal', true)">
+
+    </button>
+
+    @if($modal)
+    @endif
 </div>
