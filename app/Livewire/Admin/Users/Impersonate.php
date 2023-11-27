@@ -15,7 +15,6 @@ class Impersonate extends Component
 
     public function impersonate(int $id): void
     {
-
         session()->put('impersonate', $id);
     }
 
