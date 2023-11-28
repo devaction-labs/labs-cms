@@ -9,6 +9,10 @@
 </head>
 <body class="min-h-screen font-sans antialiased">
 <x-toast/>
+@if(session('impersonate'))
+    <livewire:admin.users.stop-impersonate/>
+@endif
+
 <x-main full-width>
 
 
@@ -47,8 +51,11 @@
         </x-menu>
     </x-slot:sidebar>
 
+
     <!-- The `$slot` goes here -->
     <x-slot:content>
+
+
         {{ $slot }}
     </x-slot:content>
 </x-main>
