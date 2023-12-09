@@ -1,11 +1,12 @@
 <?php
 
 use App\Listeners\Auth\CreateValidationCode;
-use App\Livewire\Auth\Register;
+use App\Livewire\Auth\{EmailValidation, Register};
 use App\Models\User;
 use App\Notifications\Auth\ValidationCodeNotification;
 use Illuminate\Auth\Events\Registered;
 
+use function Pest\Laravel\actingAs;
 use function PHPUnit\Framework\assertTrue;
 
 beforeEach(function () {
@@ -59,6 +60,17 @@ describe('validation page', function () {
             ->call('submit')
             ->assertHasNoErrors()
             ->assertRedirect(route('auth.email-validation'));
+    });
+
+    it('should check if the code is valid', function () {
+        $user = User::factory()->withValidationCode()->create();
+
+        actingAs($user);
+
+        Livewire::test(EmailValidation::class)
+            ->set('code', '000000')
+            ->call('handle')
+            ->assertHasErrors(['code']);
     });
 
 });
