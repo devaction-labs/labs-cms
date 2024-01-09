@@ -1,6 +1,5 @@
 <?php
 
-use App\Enum\Can;
 use App\Livewire\Customers;
 use App\Models\{Customer, User};
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -43,10 +42,11 @@ test('check the table format', function () {
 });
 
 it('should be able to filter by name and email', function () {
-    $admin = User::factory()->admin()->create(['name' => 'Joe Doe', 'email' => 'admin@gmail.com']);
-    $mario = User::factory()->create(['name' => 'Mario', 'email' => 'little_guy@gmail.com']);
+    $user  = User::factory()->create();
+    $joe   = Customer::factory()->create(['name' => 'Joe Doe', 'email' => 'admin@gmail.com']);
+    $mario = Customer::factory()->create(['name' => 'Mario', 'email' => 'little_guy@gmail.com']);
 
-    actingAs($admin);
+    actingAs($user);
     Livewire::test(Customers\Index::class)
         ->assertSet('customers', function ($customers) {
             expect($customers)->toHaveCount(2);
@@ -72,10 +72,11 @@ it('should be able to filter by name and email', function () {
 });
 
 it('should be able to sort by name', function () {
-    $admin    = User::factory()->admin()->create(['name' => 'Joe Doe', 'email' => 'admin@gmail.com']);
-    $nonAdmin = User::factory()->withPermission(Can::TESTING)->create(['name' => 'Mario', 'email' => 'little_guy@gmail.com']);
+    $user  = User::factory()->create();
+    $joe   = Customer::factory()->create(['name' => 'Joe Doe', 'email' => 'admin@gmail.com']);
+    $mario = Customer::factory()->create(['name' => 'Mario', 'email' => 'little_guy@gmail.com']);
 
-    actingAs($admin);
+    actingAs($user);
     Livewire::test(Customers\Index::class)
         ->set('sortDirection', 'asc')
         ->set('sortColumnBy', 'name')
@@ -98,10 +99,10 @@ it('should be able to sort by name', function () {
 });
 
 it('should be able to paginate the result', function () {
-    $admin = User::factory()->admin()->create(['name' => 'Joe Doe', 'email' => 'admin@gmail.com']);
-    User::factory()->withPermission(Can::TESTING)->count(30)->create();
+    $user = User::factory()->create();
+    Customer::factory()->count(30)->create();
 
-    actingAs($admin);
+    actingAs($user);
     Livewire::test(Customers\Index::class)
         ->assertSet('customers', function (LengthAwarePaginator $customers) {
             expect($customers)
@@ -116,5 +117,4 @@ it('should be able to paginate the result', function () {
 
             return true;
         });
-    ;
 });
