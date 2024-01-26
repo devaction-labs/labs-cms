@@ -16,6 +16,12 @@
             :options="[['id'=>5,'name'=>5], ['id'=>15,'name'=>15], ['id'=>25,'name'=>25], ['id'=>50,'name'=>50]]"
             label="Records Per Page"
         />
+
+        <x-checkbox
+            label="Show Archived Customers"
+            wire:model.live="search_trash"
+            class="checkbox-primary"
+            right tight/>
     </div>
 
     <x-table :headers="$this->headers" :rows="$this->items">
