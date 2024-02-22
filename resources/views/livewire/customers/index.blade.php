@@ -66,6 +66,7 @@
     {{ $this->items->links(data: ['scrollTo' => false]) }}
 
     <livewire:customers.create/>
+    <livewire:customers.update/>
     <livewire:customers.archive/>
     <livewire:customers.restore/>
 </div>

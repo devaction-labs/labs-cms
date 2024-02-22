@@ -30,6 +30,5 @@ class Update extends Component
         $this->validate();
 
         $this->customer->update();
-
     }
 }
