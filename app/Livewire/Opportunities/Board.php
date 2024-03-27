@@ -28,8 +28,9 @@ class Board extends Component
             ->get();
     }
 
-    public function updateOpportunities($data): void
+    public function updateOpportunities(array $data): void
     {
+        rd($data);
         $order = collect();
 
         foreach ($data as $group) {
