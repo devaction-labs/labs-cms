@@ -38,7 +38,7 @@ describe('validations', function () {
         Livewire::test(Opportunities\Create::class)
             ->set('form.customer_id', $value)
             ->call('save')
-            ->assertHasErrors(['customer_id' => $rule]);
+            ->assertHasErrors(['form.customer_id' => $rule]);
     })->with([
         'required' => ['required', ''],
         'exists'   => ['exists', 9430],
@@ -48,7 +48,7 @@ describe('validations', function () {
         Livewire::test(Opportunities\Create::class)
             ->set('form.title', $value)
             ->call('save')
-            ->assertHasErrors(['title' => $rule]);
+            ->assertHasErrors(['form.title' => $rule]);
     })->with([
         'required' => ['required', ''],
         'min'      => ['min', 'Jo'],
@@ -59,7 +59,7 @@ describe('validations', function () {
         Livewire::test(Opportunities\Create::class)
             ->set('form.status', $value)
             ->call('save')
-            ->assertHasErrors(['status' => $rule]);
+            ->assertHasErrors(['form.status' => $rule]);
     })->with([
         'required' => ['required', ''],
         'in'       => ['in', 'jeremias'],
@@ -69,7 +69,7 @@ describe('validations', function () {
         Livewire::test(Opportunities\Create::class)
             ->set('form.amount', $value)
             ->call('save')
-            ->assertHasErrors(['amount' => $rule]);
+            ->assertHasErrors(['form.amount' => $rule]);
     })->with([
         'required' => ['required', ''],
     ]);

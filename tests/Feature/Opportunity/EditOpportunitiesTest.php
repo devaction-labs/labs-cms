@@ -41,7 +41,7 @@ describe('validations', function () {
             ->call('load', $this->opportunity->id)
             ->set('form.title', $value)
             ->call('save')
-            ->assertHasErrors(['title' => $rule]);
+            ->assertHasErrors(['form.title' => $rule]);
     })->with([
         'required' => ['required', ''],
         'min'      => ['min', 'Jo'],
@@ -53,7 +53,7 @@ describe('validations', function () {
             ->call('load', $this->opportunity->id)
             ->set('form.status', $value)
             ->call('save')
-            ->assertHasErrors(['status' => $rule]);
+            ->assertHasErrors(['form.status' => $rule]);
     })->with([
         'required' => ['required', ''],
         'in'       => ['in', 'jeremias'],
@@ -64,7 +64,7 @@ describe('validations', function () {
             ->call('load', $this->opportunity->id)
             ->set('form.amount', $value)
             ->call('save')
-            ->assertHasErrors(['amount' => $rule]);
+            ->assertHasErrors(['form.amount' => $rule]);
     })->with([
         'required' => ['required', ''],
     ]);
