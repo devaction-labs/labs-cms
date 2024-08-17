@@ -19,7 +19,7 @@ class Form extends BaseForm
     public function rules(): array
     {
         return [
-            'name'  => ['required', 'min:3', 'max:255'] ,
+            'name'  => ['required', 'min:3', 'max:255'],
             'email' => ['required_without:phone', 'email', Rule::unique('customers')->ignore($this->customer?->id)],
             'phone' => ['required_without:email', Rule::unique('customers')->ignore($this->customer?->id)],
         ];
@@ -29,16 +29,16 @@ class Form extends BaseForm
     {
         $this->customer = $customer;
 
-        $this->name  = $customer->name;
-        $this->email = $customer->email;
-        $this->phone = $customer->phone;
+        $this->name  = (string)$customer->name;
+        $this->email = (string)$customer->email;
+        $this->phone = (string)$customer->phone;
     }
 
     public function create(): void
     {
         $this->validate();
 
-        Customer::create([
+        Customer::query()->create([
             'type'  => 'customer',
             'name'  => $this->name,
             'email' => $this->email,
@@ -51,6 +51,10 @@ class Form extends BaseForm
     public function update(): void
     {
         $this->validate();
+
+        if ($this->customer === null) {
+            return;
+        }
 
         $this->customer->name  = $this->name;
         $this->customer->email = $this->email;

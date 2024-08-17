@@ -37,11 +37,21 @@ class Form extends BaseForm
         $this->searchCustomers();
     }
 
+    public function searchCustomers(string $value = ''): void
+    {
+        $this->customers = Customer::query()
+            ->where('name', 'like', "%$value%")
+            ->take(5)
+            ->orderBy('name')
+            ->get(['id', 'name'])
+            ->when(filled($this->customer_id), fn ($q) => $q->merge(Customer::query()->whereId($this->customer_id)->get(['id', 'name'])));
+    }
+
     public function create(): void
     {
         $this->validate();
 
-        Opportunity::create([
+        Opportunity::query()->create([
             'customer_id' => $this->customer_id,
             'title'       => $this->title,
             'status'      => $this->status,
@@ -51,36 +61,33 @@ class Form extends BaseForm
         $this->reset();
     }
 
-    public function update(): void
-    {
-        $this->validate();
-
-        $this->opportunity->customer_id = $this->customer_id;
-        $this->opportunity->title       = $this->title;
-        $this->opportunity->status      = $this->status;
-        $this->opportunity->amount      = $this->getAmountAsInt();
-
-        $this->opportunity->update();
-    }
-
     private function getAmountAsInt(): int
     {
         $amount = $this->amount;
 
-        if($amount === null) {
+        if (!is_numeric($amount)) {
             $amount = 0;
         }
 
         return (int) ($amount * 100);
     }
 
-    public function searchCustomers(string $value = ''): void
+    public function update(): void
     {
-        $this->customers = Customer::query()
-            ->where('name', 'like', "%$value%")
-            ->take(5)
-            ->orderBy('name')
-            ->get(['id', 'name'])
-            ->when(filled($this->customer_id), fn ($q) => $q->merge(Customer::query()->whereId($this->customer_id)->get(['id', 'name'])));
+        $this->validate();
+
+        if ($this->opportunity === null) {
+            return;
+        }
+
+        if ($this->customer_id !== null) {
+            $this->opportunity->customer_id = $this->customer_id;
+        }
+
+        $this->opportunity->title  = $this->title;
+        $this->opportunity->status = $this->status;
+        $this->opportunity->amount = $this->getAmountAsInt();
+
+        $this->opportunity->update();
     }
 }

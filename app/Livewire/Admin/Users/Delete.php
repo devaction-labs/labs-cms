@@ -38,7 +38,13 @@ class Delete extends Component
     {
         $this->validate();
 
-        if($this->user->is(auth()->user())) {
+        if ($this->user === null) {
+            $this->addError('user', 'User not found.');
+
+            return;
+        }
+
+        if ($this->user->is(auth()->user())) {
 
             $this->addError('confirmation', "You can't delete yourself brow.");
 
@@ -46,7 +52,7 @@ class Delete extends Component
         }
 
         $this->user->delete();
-        $this->user->deleted_by = auth()->user()->id;
+        $this->user->deleted_by = auth()->user()?->id;
         $this->user->save();
 
         $this->user->notify(new UserDeletedNotification());

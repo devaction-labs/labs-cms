@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Dev;
 
+use App\Utilities\Traits\StringHelpers;
 use Illuminate\Support\Facades\Process;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -12,6 +13,7 @@ use Livewire\Component;
  */
 class BranchEnv extends Component
 {
+    use StringHelpers;
     public function render(): string
     {
         return <<<'blade'
@@ -25,7 +27,7 @@ class BranchEnv extends Component
     #[Computed]
     public function env(): string
     {
-        return config('app.env');
+        return $this->convertToString(config('app.env'));
     }
 
     #[Computed]

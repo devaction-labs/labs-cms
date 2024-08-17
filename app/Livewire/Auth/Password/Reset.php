@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth\Password;
 
 use App\Models\User;
+use App\Utilities\Traits\StringHelpers;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\{DB, Hash, Password};
@@ -12,6 +13,8 @@ use Livewire\Component;
 
 class Reset extends Component
 {
+    use StringHelpers;
+
     public ?string $token = null;
 
     #[Rule(['required', 'email', 'confirmed'])]
@@ -26,8 +29,8 @@ class Reset extends Component
 
     public function mount(?string $token = null, ?string $email = null): void
     {
-        $this->token = request('token', $token);
-        $this->email = request('email', $email);
+        $this->token = $this->convertToString(request('token', $token));
+        $this->email = $this->convertToString(request('email', $email));
 
         if ($this->tokenNotValid()) {
 
@@ -35,6 +38,22 @@ class Reset extends Component
 
             $this->redirectRoute('login');
         }
+    }
+
+    private function tokenNotValid(): bool
+    {
+        $tokens = DB::table('password_reset_tokens')
+            ->get(['token']);
+
+        $token = $this->convertToString($this->token);
+
+        foreach ($tokens as $t) {
+            if (is_object($t) && property_exists($t, 'token') && Hash::check($token, $t->token)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     #[Layout('components.layouts.guest')]
@@ -47,7 +66,7 @@ class Reset extends Component
     {
         $this->validate();
 
-        $status = Password::reset(
+        $statusPassword = Password::reset(
             $this->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user, $password) {
                 $user->password       = $password;
@@ -57,6 +76,8 @@ class Reset extends Component
                 event(new PasswordReset($user));
             }
         );
+
+        $status = $this->convertToString($statusPassword);
 
         session()->flash('status', __($status));
 
@@ -71,19 +92,5 @@ class Reset extends Component
     public function obfuscatedEmail(): string
     {
         return obfuscate_email($this->email);
-    }
-
-    private function tokenNotValid(): bool
-    {
-        $tokens = DB::table('password_reset_tokens')
-            ->get(['token']);
-
-        foreach ($tokens as $t) {
-            if (Hash::check($this->token, $t->token)) {
-                return false;
-            }
-        }
-
-        return true;
     }
 }

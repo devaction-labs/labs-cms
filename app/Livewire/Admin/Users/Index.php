@@ -16,8 +16,8 @@ use Livewire\{Attributes\On, Component, WithPagination};
  */
 class Index extends Component
 {
-    use WithPagination;
     use HasTable;
+    use WithPagination;
 
     public array $search_permissions = [];
 
@@ -31,16 +31,12 @@ class Index extends Component
         $this->filterPermissions();
     }
 
-    #[On('user::deleted')]
-    #[On('user::restored')]
-    public function render(): View
+    public function filterPermissions(?string $value = null): void
     {
-        return view('livewire.admin.users.index');
-    }
-
-    public function updatedPerPage($value): void
-    {
-        $this->resetPage();
+        $this->permissionsToSearch = Permission::query()
+            ->when($value, fn (Builder $q) => $q->where('key', 'like', "%$value%"))
+            ->orderBy('key')
+            ->get();
     }
 
     public function query(): Builder
@@ -55,8 +51,20 @@ class Index extends Component
             )
             ->when(
                 $this->search_trash,
-                fn (Builder $q) => $q->onlyTrashed()/** @phpstan-ignore-line */
+                fn (Builder $q) => $q->onlyTrashed()
             );
+    }
+
+    #[On('user::deleted')]
+    #[On('user::restored')]
+    public function render(): View
+    {
+        return view('livewire.admin.users.index');
+    }
+
+    public function updatedPerPage(): void
+    {
+        $this->resetPage();
     }
 
     public function searchColumns(): array
@@ -72,14 +80,6 @@ class Index extends Component
             Header::make('email', 'Email'),
             Header::make('permissions', 'Permissions'),
         ];
-    }
-
-    public function filterPermissions(?string $value = null): void
-    {
-        $this->permissionsToSearch = Permission::query()
-            ->when($value, fn (Builder $q) => $q->where('key', 'like', "%$value%"))
-            ->orderBy('key')
-            ->get();
     }
 
     public function destroy(int $id): void

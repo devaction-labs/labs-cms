@@ -6,12 +6,15 @@ use App\Models\{Opportunity};
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\{On};
 use Livewire\Component;
+use Mary\Traits\Toast;
 
 class Update extends Component
 {
+    use Toast;
+
     public Form $form;
 
-    public bool $modal = false;
+    public bool $opportunitiesUpdate = false;
 
     public function render(): View
     {
@@ -21,18 +24,24 @@ class Update extends Component
     #[On('opportunity::update')]
     public function load(int $id): void
     {
-        $opportunity = Opportunity::find($id);
+        $opportunity = Opportunity::query()->find($id);
+
+        if ($opportunity === null) {
+            return;
+        }
+
         $this->form->setOpportunity($opportunity);
 
         $this->form->resetErrorBag();
-        $this->modal = true;
+        $this->opportunitiesUpdate = true;
+        $this->success('Opportunity loaded successfully');
     }
 
     public function save(): void
     {
         $this->form->update();
 
-        $this->modal = false;
+        $this->opportunitiesUpdate = false;
         $this->dispatch('opportunity::reload')->to('opportunities.index');
     }
 

@@ -11,7 +11,7 @@ class Restore extends Component
 {
     public Opportunity $opportunity;
 
-    public bool $modal = false;
+    public bool $opportunitiesRestore = false;
 
     public function render(): View
     {
@@ -21,14 +21,14 @@ class Restore extends Component
     #[On('opportunity::restore')]
     public function confirmAction(int $id): void
     {
-        $this->opportunity = Opportunity::query()->onlyTrashed()->findOrFail($id);
-        $this->modal       = true;
+        $this->opportunity          = Opportunity::query()->onlyTrashed()->findOrFail($id);
+        $this->opportunitiesRestore = true;
     }
 
     public function restore(): void
     {
         $this->opportunity->restore();
-        $this->modal = false;
+        $this->opportunitiesRestore = false;
         $this->dispatch('opportunity::reload')->to('opportunities.index');
     }
 }

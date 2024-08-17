@@ -3,6 +3,7 @@
 namespace App\Livewire\Opportunities;
 
 use App\Models\Opportunity;
+use App\Utilities\Traits\StringHelpers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as SupportCollection;
@@ -18,6 +19,8 @@ use Livewire\Component;
  */
 class Board extends Component
 {
+    use StringHelpers;
+
     public function render(): View
     {
         return view('livewire.opportunities.board');
@@ -27,7 +30,14 @@ class Board extends Component
     public function opportunities(): Collection
     {
         return Opportunity::query()
-            ->orderByRaw("field(status, 'open','won', 'lost')")
+            ->orderByRaw("
+            CASE status
+                WHEN 'open' THEN 1
+                WHEN 'won' THEN 2
+                WHEN 'lost' THEN 3
+                ELSE 4
+            END
+        ")
             ->orderBy('sort_order')
             ->get();
     }
@@ -62,6 +72,7 @@ class Board extends Component
 
     private function getItemsInOrder(array $data): SupportCollection
     {
+        /** @var SupportCollection<int, string> $order */
         $order = collect();
 
         foreach ($data as $group) {
@@ -91,7 +102,7 @@ class Board extends Component
             default => null
         };
 
-        $list = $collection[$id];
+        $list = $this->convertToString($collection[$id]);
         $ids  = explode(',', $list);
 
         if (filled($list)) {
@@ -101,8 +112,17 @@ class Board extends Component
 
     private function updateSortOrders(SupportCollection $collection): void
     {
-        $sortOrder = $collection->filter(fn ($f) => filled($f))->join(',');
+        $ids            = explode(',', $collection->filter(fn ($f) => filled($f))->join(','));
+        $caseStatements = [];
 
-        DB::table('opportunities')->update(['sort_order' => DB::raw("field(id, $sortOrder)")]);
+        foreach ($ids as $index => $id) {
+            $caseStatements[] = "WHEN id = $id THEN " . ($index + 1);  // Incrementando o índice
+        }
+
+        $caseSql = implode(' ', $caseStatements);
+        $sql     = "CASE $caseSql ELSE sort_order END";
+
+        DB::table('opportunities')->update(['sort_order' => DB::raw($sql)]);
     }
+
 }
