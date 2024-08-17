@@ -78,6 +78,7 @@
             ]
         },
         "single_quote": true,
-        "new_with_parentheses": true
+        "new_with_parentheses": true,
+        "single_line_empty_body": true
     }
 }
