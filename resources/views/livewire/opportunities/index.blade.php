@@ -1,5 +1,5 @@
 <div>
-    <x-header title="Opportunities" separator/>
+    <x-header title="Opportunities" separator />
 
     <div class="mb-4 flex items-end justify-between">
         <div class="w-full flex space-x-4 items-end">
@@ -21,27 +21,27 @@
                 label="Show Archived Opportunities"
                 wire:model.live="search_trash"
                 class="checkbox-primary"
-                right tight/>
+                right tight />
         </div>
 
-        <x-button @click="$dispatch('opportunity::create')" label="New Opportunity" icon="o-plus"/>
+        <x-button @click="$dispatch('opportunity::create')" label="New Opportunity" icon="o-plus" />
     </div>
 
-    <x-table :headers="$this->headers" :rows="$this->items">
+    <x-table :headers="$this->headers" :rows="$this->items" with-pagination>
         @scope('header_id', $header)
-        <x-table.th :$header name="id"/>
+        <x-table.th :$header name="id" />
         @endscope
 
         @scope('header_title', $header)
-        <x-table.th :$header name="title"/>
+        <x-table.th :$header name="title" />
         @endscope
 
         @scope('header_status', $header)
-        <x-table.th :$header name="status"/>
+        <x-table.th :$header name="status" />
         @endscope
 
         @scope('header_amount', $header)
-        <x-table.th :$header name="amount"/>
+        <x-table.th :$header name="amount" />
         @endscope
 
         @scope('cell_status', $item)
@@ -67,6 +67,7 @@
                 icon="o-pencil"
                 @click="$dispatch('opportunity::update', { id: {{ $opportunity->id }}})"
                 spinner class="btn-sm"
+                class="btn-sm btn-ghost text-cyan-600"
             />
 
             @unless($opportunity->trashed())
@@ -76,6 +77,7 @@
                     icon="o-trash"
                     @click="$dispatch('opportunity::archive', { id: {{ $opportunity->id }}})"
                     spinner class="btn-sm"
+                    class="btn-sm btn-ghost text-error"
                 />
             @else
                 <x-button
@@ -90,10 +92,8 @@
         @endscope
     </x-table>
 
-    {{ $this->items->links(data: ['scrollTo' => false]) }}
-
-    <livewire:opportunities.create/>
-    <livewire:opportunities.update/>
-    <livewire:opportunities.archive/>
-    <livewire:opportunities.restore/>
+    <livewire:opportunities.create />
+    <livewire:opportunities.update />
+    <livewire:opportunities.archive />
+    <livewire:opportunities.restore />
 </div>

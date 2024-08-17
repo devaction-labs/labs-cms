@@ -11,7 +11,7 @@ class Archive extends Component
 {
     public Opportunity $opportunity;
 
-    public bool $modal = false;
+    public bool $opportunitiesArchive = false;
 
     public function render(): View
     {
@@ -21,14 +21,14 @@ class Archive extends Component
     #[On('opportunity::archive')]
     public function confirmAction(int $id): void
     {
-        $this->opportunity = Opportunity::findOrFail($id);
-        $this->modal       = true;
+        $this->opportunity          = Opportunity::findOrFail($id);
+        $this->opportunitiesArchive = true;
     }
 
     public function archive(): void
     {
         $this->opportunity->delete();
-        $this->modal = false;
+        $this->opportunitiesArchive = false;
         $this->dispatch('opportunity::reload')->to('opportunities.index');
     }
 }

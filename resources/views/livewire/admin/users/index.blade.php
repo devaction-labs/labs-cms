@@ -1,5 +1,6 @@
+@php use App\Enum\Can; @endphp
 <div>
-    <x-header title="Users" separator/>
+    <x-header title="Users" separator />
 
 
     <div class="mb-4 flex space-x-4">
@@ -23,7 +24,7 @@
             label="Show Deleted Users"
             wire:model.live="search_trash"
             class="checkbox-primary"
-            right tight/>
+            right tight />
 
         <x-select
             wire:model.live="perPage"
@@ -32,22 +33,22 @@
         />
     </div>
 
-    <x-table :headers="$this->headers" :rows="$this->items">
+    <x-table :headers="$this->headers" :rows="$this->items" with-pagination>
         @scope('header_id', $header)
-        <x-table.th :$header name="id"/>
+        <x-table.th :$header name="id" />
         @endscope
 
         @scope('header_name', $header)
-        <x-table.th :$header name="name"/>
+        <x-table.th :$header name="name" />
         @endscope
 
         @scope('header_email', $header)
-        <x-table.th :$header name="email"/>
+        <x-table.th :$header name="email" />
         @endscope
 
         @scope('cell_permissions', $user)
         @foreach($user->permissions as $permission)
-            <x-badge :value="$permission->key" class="badge-primary"/>
+            <x-badge :value="$permission->key" class="badge-primary" />
         @endforeach
         @endscope
 
@@ -60,9 +61,10 @@
                 icon="o-pencil"
                 wire:click="showUser({{ $user->id }})"
                 spinner class="btn-sm"
+                class="btn-sm btn-ghost text-cyan-600"
             />
 
-            @can(\App\Enum\Can::BE_AN_ADMIN->value)
+            @can(Can::BE_AN_ADMIN->value)
                 @unless($user->trashed())
                     @unless($user->is(auth()->user()))
                         <x-button
@@ -71,6 +73,7 @@
                             icon="o-trash"
                             wire:click="destroy('{{ $user->id }}')"
                             spinner class="btn-sm"
+                            class="btn-sm btn-ghost text-error"
                         />
 
                         <x-button
@@ -79,6 +82,8 @@
                             icon="o-eye"
                             wire:click="impersonate('{{ $user->id }}')"
                             spinner class="btn-sm"
+                            class="btn-sm btn-ghost text-primary"
+
                         />
 
                     @endif
@@ -93,10 +98,8 @@
         @endscope
     </x-table>
 
-    {{ $this->items->links(data: ['scrollTo' => false]) }}
-
-    <livewire:admin.users.delete/>
-    <livewire:admin.users.restore/>
-    <livewire:admin.users.show/>
-    <livewire:admin.users.impersonate/>
+    <livewire:admin.users.delete />
+    <livewire:admin.users.restore />
+    <livewire:admin.users.show />
+    <livewire:admin.users.impersonate />
 </div>

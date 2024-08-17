@@ -2,8 +2,11 @@
 
 use App\Enum\Can;
 use App\Livewire\Auth\{EmailValidation, Login, Password, Register};
-use App\Livewire\{Admin, Customers, Opportunities, Welcome};
+use App\Livewire\{Admin, Customers, Landing\Page\Home, Opportunities, Welcome};
 use Illuminate\Support\Facades\Route;
+
+//region Landing
+Route::get('/', Home::class)->name('landing.home');
 
 //region Login Flow
 Route::get('/login', Login::class)->name('login');
@@ -16,7 +19,7 @@ Route::get('/password/reset', Password\Reset::class)->name('password.reset');
 
 //region Authenticated
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', Welcome::class)->name('dashboard');
+    Route::get('/dashboard', Welcome::class)->name('dashboard');
 
     //region Customers
     Route::get('/customers', Customers\Index::class)->name('customers');

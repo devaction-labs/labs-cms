@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      lucide-static:
+        specifier: ^0.428.0
+        version: 0.428.0
     devDependencies:
       '@nextapps-be/livewire-sortablejs':
         specifier: ^0.4.1
@@ -24,8 +28,8 @@ importers:
         specifier: ^1.7.4
         version: 1.7.4
       daisyui:
-        specifier: ^3.9.4
-        version: 3.9.4
+        specifier: ^4
+        version: 4.12.10(postcss@8.4.41)
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -424,9 +428,6 @@ packages:
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
-  colord@2.9.3:
-    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
-
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
 
@@ -454,8 +455,12 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  daisyui@3.9.4:
-    resolution: {integrity: sha512-fvi2RGH4YV617/6DntOVGcOugOPym9jTGWW2XySb5ZpvdWO4L7bEG77VHirrnbRUEWvIEVXkBpxUz2KFj0rVnA==}
+  culori@3.3.0:
+    resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  daisyui@4.12.10:
+    resolution: {integrity: sha512-jp1RAuzbHhGdXmn957Z2XsTZStXGHzFfF0FgIOZj3Wv9sH7OZgLfXTRZNfKVYxltGUOBsG1kbWAdF5SrqjebvA==}
     engines: {node: '>=16.9.0'}
 
   debug@4.3.6:
@@ -675,6 +680,9 @@ packages:
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
+
+  lucide-static@0.428.0:
+    resolution: {integrity: sha512-no/iuS0o2WtpwLdDjJhowziRpmJBZWM4LjuB0F+vWg1mOncm6rqDxlOkV63V7Q4UQoXImWT2HPAm28w1PJGkJg==}
 
   merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
@@ -1366,8 +1374,6 @@ snapshots:
 
   color-name@1.1.4: {}
 
-  colord@2.9.3: {}
-
   colorette@2.0.20: {}
 
   combined-stream@1.0.8:
@@ -1391,15 +1397,16 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  daisyui@3.9.4:
+  culori@3.3.0: {}
+
+  daisyui@4.12.10(postcss@8.4.41):
     dependencies:
-      colord: 2.9.3
       css-selector-tokenizer: 0.8.0
-      postcss: 8.4.41
+      culori: 3.3.0
+      picocolors: 1.0.1
       postcss-js: 4.0.1(postcss@8.4.41)
-      tailwindcss: 3.4.10
     transitivePeerDependencies:
-      - ts-node
+      - postcss
 
   debug@4.3.6:
     dependencies:
@@ -1619,6 +1626,8 @@ snapshots:
       wrap-ansi: 9.0.0
 
   lru-cache@10.4.3: {}
+
+  lucide-static@0.428.0: {}
 
   merge-stream@2.0.0: {}
 

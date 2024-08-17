@@ -10,7 +10,7 @@ class Create extends Component
 {
     public Form $form;
 
-    public bool $modal = false;
+    public bool $opportunitiesCreate = false;
 
     public function render(): View
     {
@@ -22,14 +22,14 @@ class Create extends Component
     {
         $this->form->resetErrorBag();
         $this->form->searchCustomers();
-        $this->modal = true;
+        $this->opportunitiesCreate = true;
     }
 
     public function save(): void
     {
         $this->form->create();
 
-        $this->modal = false;
+        $this->opportunitiesCreate = false;
         $this->dispatch('opportunity::reload')->to('opportunities.index');
     }
 
