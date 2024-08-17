@@ -3,6 +3,7 @@
 use App\Livewire\Opportunities\Board;
 use App\Models\Opportunity;
 use Illuminate\Database\Eloquent\Collection;
+use Livewire\Livewire;
 
 it('should render', function () {
     Livewire::test(Board::class)

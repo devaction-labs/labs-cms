@@ -1,9 +1,24 @@
 includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
+    - ./vendor/larastan/larastan/extension.neon
+
 parameters:
-    checkGenericClassInNonGenericObjectType: false
+    excludePaths:
+        analyse:
+            - tests
 
+    ignoreErrors:
+#        - '#Anonymous function should return Illuminate\\Database\\Eloquent\\Builder<Illuminate\\Database\\Eloquent\\Model> but returns Illuminate\\Database\\Eloquent\\Builder<App\\Models\\User>\.#'
+#        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder::onlyTrashed\(\)#'
+        - '#Unable to resolve the template type TKey in call to function collect#'
+        - '#Unable to resolve the template type TValue in call to function collect#'
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics
+
+    noUnnecessaryCollectionCall: false
     paths:
-        - app/
+        - app
 
-    level: 5
+    # The level 9 is the highest level
+    level: 9
+
+    treatPhpDocTypesAsCertain: false

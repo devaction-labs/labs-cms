@@ -21,7 +21,12 @@ class Update extends Component
     #[On('customer::update')]
     public function load(int $id): void
     {
-        $customer = Customer::find($id);
+        $customer = Customer::query()->find($id);
+
+        if ($customer === null) {
+            return;
+        }
+
         $this->form->setCustomer($customer);
 
         $this->form->resetErrorBag();

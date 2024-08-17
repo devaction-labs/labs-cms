@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Users;
 
 use App\Models\User;
 use App\Notifications\UserRestoredAccessNotification;
+use App\Traits\User\AuthenticatedUser;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\{On, Rule};
 use Livewire\Component;
@@ -12,6 +13,7 @@ use Mary\Traits\Toast;
 class Restore extends Component
 {
     use Toast;
+    use AuthenticatedUser;
 
     public ?User $user = null;
 
@@ -30,7 +32,7 @@ class Restore extends Component
     #[On('user::restoring')]
     public function openConfirmationFor(int $userId): void
     {
-        $this->user  = User::select('id', 'name')->withTrashed()->find($userId);
+        $this->user  = User::query()->select('id', 'name')->withTrashed()->find($userId);
         $this->modal = true;
     }
 
@@ -38,7 +40,13 @@ class Restore extends Component
     {
         $this->validate();
 
-        if($this->user->is(auth()->user())) {
+        if ($this->user === null) {
+            $this->addError('user', 'User not found.');
+
+            return;
+        }
+
+        if ($this->user->is($this->getAuthenticatedUser())) {
 
             $this->addError('confirmation', "You can't restore yourself brow.");
 
@@ -47,7 +55,7 @@ class Restore extends Component
 
         $this->user->restore();
         $this->user->restored_at = now();
-        $this->user->restored_by = auth()->user()->id;
+        $this->user->restored_by = $this->getAuthenticatedUser()->id;
         $this->user->save();
 
         $this->user->notify(new UserRestoredAccessNotification());

@@ -7,6 +7,8 @@ use App\Notifications\Auth\ValidationCodeNotification;
 use App\Notifications\WelcomeNotification;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Notification;
+use Livewire\Livewire;
 
 use function Pest\Laravel\{actingAs, get};
 use function PHPUnit\Framework\assertTrue;
@@ -17,7 +19,7 @@ beforeEach(function () {
 
 describe('after registration', function () {
 
-    it("should create a new validation code and save in the users table", function () {
+    it('should create a new validation code and save in the users table', function () {
         $user = User::factory()->create(['email_verified_at' => null, 'validation_code' => null]);
 
         $event    = new Registered($user);

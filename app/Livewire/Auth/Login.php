@@ -22,7 +22,7 @@ class Login extends Component
 
     public function tryToLogin(): void
     {
-        if($this->ensureIsNotRateLimiting()) {
+        if ($this->ensureIsNotRateLimiting()) {
             return;
         }
 
@@ -37,11 +37,6 @@ class Login extends Component
         $this->redirect(route('dashboard'));
     }
 
-    private function throttleKey(): string
-    {
-        return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
-    }
-
     private function ensureIsNotRateLimiting(): bool
     {
         if (RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
@@ -53,5 +48,12 @@ class Login extends Component
         }
 
         return false;
+    }
+
+    private function throttleKey(): string
+    {
+        $email = $this->email ?? '';
+
+        return Str::transliterate(Str::lower($email) . '|' . request()->ip());
     }
 }

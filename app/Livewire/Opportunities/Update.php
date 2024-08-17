@@ -21,7 +21,12 @@ class Update extends Component
     #[On('opportunity::update')]
     public function load(int $id): void
     {
-        $opportunity = Opportunity::find($id);
+        $opportunity = Opportunity::query()->find($id);
+
+        if ($opportunity === null) {
+            return;
+        }
+
         $this->form->setOpportunity($opportunity);
 
         $this->form->resetErrorBag();

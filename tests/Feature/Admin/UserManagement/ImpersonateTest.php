@@ -2,6 +2,7 @@
 
 use App\Livewire\Admin\Users\{Impersonate, Index, StopImpersonate};
 use App\Models\User;
+use Livewire\Livewire;
 
 use function Pest\Laravel\{actingAs, get};
 use function PHPUnit\Framework\{assertSame, assertTrue};
@@ -12,7 +13,7 @@ it('should add a key impersonate to the session with the given user', function (
 
     actingAs($admin);
 
-    \Livewire\Livewire::test(Impersonate::class)
+    Livewire::test(Impersonate::class)
         ->call('impersonate', $user->id);
 
     assertTrue(session()->has('impersonate'));
