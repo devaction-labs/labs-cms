@@ -54,8 +54,10 @@
                             required />
                         <div class="label">
                             <span class="label-text-alt"></span>
-                            <span class="label-text-alt"><a href="#"
-                                                            class="text-base-content/80">{{ __('Forgot password?') }}</a></span>
+                            <span class="label-text-alt">
+                                <a href="#" class="text-base-content/80"
+                                   wire:click="showRecovery">{{ __('Forgot password?') }}</a>
+                            </span>
                         </div>
                     </div>
                     <div class="flex items-center justify-end mt-3 gap-3">

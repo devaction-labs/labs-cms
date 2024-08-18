@@ -17,6 +17,7 @@
 <body>
 
 <livewire:auth.login />
+<livewire:auth.password.recovery />
 <livewire:partials.top-bar />
 
 {{ $slot }}

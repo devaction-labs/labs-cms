@@ -2,6 +2,7 @@
 
 use App\Livewire\Opportunities;
 use App\Models\Opportunity;
+use Livewire\Livewire;
 
 use function Pest\Laravel\assertNotSoftDeleted;
 
@@ -23,8 +24,8 @@ test('when confirming we should load the opportunity and set modal to true', fun
     Livewire::test(Opportunities\Restore::class)
         ->call('confirmAction', $opportunity->id)
         ->assertSet('opportunity.id', $opportunity->id)
-        ->assertSet('modal', true)
-        ->assertPropertyEntangled('modal');
+        ->assertSet('opportunitiesRestore', true)
+        ->assertPropertyEntangled('opportunitiesRestore');
 });
 
 test('after restoring we should dispatch an event to tell the list to reload', function () {
