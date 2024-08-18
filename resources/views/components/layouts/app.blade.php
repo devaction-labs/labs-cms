@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@php use App\Enum\Can; @endphp
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -10,43 +11,46 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen font-sans antialiased">
-<x-toast/>
+<x-toast />
 @if(session('impersonate'))
-    <livewire:admin.users.stop-impersonate/>
+    <livewire:admin.users.stop-impersonate />
 @endif
 
 @if(!app()->environment('production'))
-    <x-devbar/>
+    <x-devbar />
 @endif
 
 <x-main full-width>
-    <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 bg-sky-800 text-white">
+    <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 bg-neutral text-white">
         <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">mary</div>
         <div class="display-when-collapsed ml-5 font-black text-4xl text-orange-500">m</div>
-        <x-menu activate-by-route active-bg-color="bg-base-300/10">
+        <x-menu activate-by-route active-bg-color="bg-neutral-300/10">
             @if($user = auth()->user())
                 <x-list-item :item="$user" sub-value="username" no-separator no-hover
                              class="!-mx-2 mt-2 mb-5 border-y border-y-sky-900">
                     <x-slot:actions>
-                        <div class="tooltip tooltip-left" data-tip="logoff">
-                            <x-button
-                                icon="o-power"
-                                class="btn-circle btn-ghost btn-xs"
-                                @click="$dispatch('logout')"
-                            />
+                        <div class="flex items-center space-x-2">
+                            <div class="tooltip tooltip-left" data-tip="logoff">
+                                <x-button
+                                    icon="o-power"
+                                    class="btn-circle btn-ghost btn-xs"
+                                    @click="$dispatch('logout')"
+                                />
+                            </div>
+                            <x-theme-toggle class="btn btn-circle btn-ghost" />
                         </div>
                     </x-slot:actions>
                 </x-list-item>
             @endif
 
-            <x-menu-item title="Home" icon="o-home" :link="route('dashboard')"/>
-            <x-menu-item title="Customers" icon="o-building-storefront" :link="route('customers')"/>
-            <x-menu-item title="Opportunities" icon="o-currency-dollar" :link="route('opportunities')"/>
+            <x-menu-item title="Home" icon="o-home" :link="route('dashboard')" />
+            <x-menu-item title="Customers" icon="o-building-storefront" :link="route('customers')" />
+            <x-menu-item title="Opportunities" icon="o-currency-dollar" :link="route('opportunities')" />
 
-            @can(\App\Enum\Can::BE_AN_ADMIN->value)
+            @can(Can::BE_AN_ADMIN->value)
                 <x-menu-sub title="Admin" icon="o-lock-closed">
-                    <x-menu-item title="Dashboard" icon="o-chart-bar-square" :link="route('admin.dashboard')"/>
-                    <x-menu-item title="Users" icon="o-users" :link="route('admin.users')"/>
+                    <x-menu-item title="Dashboard" icon="o-chart-bar-square" :link="route('admin.dashboard')" />
+                    <x-menu-item title="Users" icon="o-users" :link="route('admin.users')" />
                 </x-menu-sub>
             @endcan
         </x-menu>
@@ -57,6 +61,6 @@
     </x-slot:content>
 </x-main>
 
-<livewire:auth.logout/>
+<livewire:auth.logout />
 </body>
 </html>

@@ -15,7 +15,9 @@
 </head>
 
 <body>
-<x-partials.topbar />
+
+<livewire:auth.login />
+<livewire:partials.top-bar />
 
 {{ $slot }}
 

@@ -38,7 +38,7 @@
 
             <div class="navbar-end gap-3">
                 <a class="btn btn-ghost btn-sm" onclick="register_modal.showModal()">Register</a>
-                <a class="btn btn-primary btn-sm" onclick="login_modal.showModal()">Login</a>
+                <livewire:auth.login />
             </div>
         </nav>
 
@@ -62,72 +62,6 @@
                 </ul>
             </div>
         </div>
-
-        <dialog id="login_modal" class="modal">
-            <div class="modal-box md:max-w-sm max-w-xs">
-                <div class="text-center">
-                    <h3 class="font-semibold text-xl">Login</h3>
-                </div>
-
-                <div>
-                    <div class="form-control mt-6">
-                        <label class="label" for="login_email">
-                            <span class="label-text  font-medium">Email</span>
-                        </label>
-                        <input
-                            autocomplete="email"
-                            id="login_email"
-                            class="input join-item input-bordered w-full input-sm"
-                            placeholder="name@daisyui.com"
-                            type="email"
-                            required />
-                    </div>
-                    <div class="form-control mt-2">
-                        <label class="label" for="login_password">
-                            <span class="label-text font-medium">Password</span>
-                        </label>
-                        <input
-                            autocomplete="password"
-                            id="login_password"
-                            class="input join-item input-bordered w-full input-sm"
-                            placeholder="It's top secret"
-                            type="password"
-                            required />
-                        <div class="label">
-                            <span class="label-text-alt"></span>
-                            <span class="label-text-alt"><a href="#"
-                                                            class="text-base-content/80">Forgot password?</a></span>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-end mt-3 gap-3">
-                        <button class="btn  btn-sm ">
-                            Register
-                        </button>
-                        <button class="btn  btn-sm btn-primary">
-                            Login
-                        </button>
-                    </div>
-                    <div class="flex items-center gap-3 mt-6">
-                        <hr class="border-base-content/5 grow" />
-                        <span class="text-base-content/70">Continue with</span>
-                        <hr class="border-base-content/5 grow" />
-                    </div>
-
-                    <div class="flex mt-6 gap-4">
-                        <button class="btn block btn-sm grow">
-                            Google
-                        </button>
-                        <button class="btn block btn-sm grow btn-neutral">
-                            Github
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <form method="dialog" class="modal-backdrop">
-                <button>close</button>
-            </form>
-        </dialog>
-
         <dialog id="register_modal" class="modal">
             <div class="modal-box md:max-w-sm max-w-xs">
                 <div class="text-center">
