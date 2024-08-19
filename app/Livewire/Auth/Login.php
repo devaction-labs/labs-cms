@@ -59,7 +59,7 @@ class Login extends Component
         return Str::transliterate(Str::lower($email) . '|' . request()->ip());
     }
 
-    #[On('auth::showLogin')]
+    #[On('auth::show::login')]
     public function openLogin(): void
     {
         $this->showLogin = true;

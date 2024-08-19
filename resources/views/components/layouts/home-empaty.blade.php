@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden min-h-screen">
 <head>
     <meta charset="utf-8" />
     <title>SaaS Landing Page</title>
@@ -14,19 +14,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
-
-<livewire:auth.login />
-<livewire:auth.register />
-
-<livewire:auth.password.recovery />
-
-{{--<x-partials.topbar />--}}
-<livewire:partials.top-bar />
+<body class="overflow-x-hidden min-h-screen">
 
 {{ $slot }}
 
-<x-partials.footer />
-<x-partials.theme-toggle />
 </body>
 </html>

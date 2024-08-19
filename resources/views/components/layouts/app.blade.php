@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? config('app.name') }}</title>
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
 
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/gh/robsontenorio/mary@0.44.2/libs/currency/currency.js"></script>
@@ -22,8 +23,8 @@
 
 <x-main full-width>
     <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 bg-neutral text-white">
-        <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">mary</div>
-        <div class="display-when-collapsed ml-5 font-black text-4xl text-orange-500">m</div>
+        <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">DevAction</div>
+        <div class="display-when-collapsed ml-5 font-black text-4xl text-orange-500">DA</div>
         <x-menu activate-by-route active-bg-color="bg-neutral-300/10">
             @if($user = auth()->user())
                 <x-list-item :item="$user" sub-value="username" no-separator no-hover

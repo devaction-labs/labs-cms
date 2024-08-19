@@ -14,6 +14,11 @@ class TopBar extends Component
 
     public function showLogin(): void
     {
-        $this->dispatch('auth::showLogin');
+        $this->dispatch('auth::show::login');
+    }
+
+    public function showRegister(): void
+    {
+        $this->dispatch('auth::show::register');
     }
 }

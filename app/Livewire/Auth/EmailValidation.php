@@ -15,14 +15,23 @@ class EmailValidation extends Component
 {
     use AuthenticatedUser;
 
+    public bool $show = false;
+
     public ?string $code = null;
 
     public ?string $sendNewCodeMessage = null;
 
-    #[Layout('components.layouts.guest')]
+    #[Layout('components.layouts.home-empaty')]
     public function render(): View
     {
         return view('livewire.auth.email-validation');
+    }
+
+    public function updatedCode(): void
+    {
+        if (strlen($this->code) === 6) {
+            $this->handle();
+        }
     }
 
     public function handle(): void
