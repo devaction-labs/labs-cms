@@ -61,8 +61,8 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-end mt-3 gap-3">
-                        <button class="btn btn-sm">
-                            Register
+                        <button class="btn btn-sm" wire:click="showRegister" type="button">
+                            {{ __('Register') }}
                         </button>
                         <button class="btn btn-primary btn-sm" type="submit" wire:loading.attr="disabled">
                             <span wire:loading.remove wire:target="tryToLogin">

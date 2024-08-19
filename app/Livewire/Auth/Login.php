@@ -70,4 +70,10 @@ class Login extends Component
         $this->dispatch('show::recovery::form');
         $this->showLogin = false;
     }
+
+    public function showRegister(): void
+    {
+        $this->dispatch('auth::show::register');
+        $this->showLogin = false;
+    }
 }
