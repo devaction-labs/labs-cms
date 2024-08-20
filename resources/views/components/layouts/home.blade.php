@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>SaaS Landing Page</title>
+    <title>{{ config('app.name') }}</title>
     <meta content="Saas Landing page" name="description" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

@@ -21,7 +21,7 @@ class Restore extends Component
     #[On('customer::restore')]
     public function confirmAction(int $id): void
     {
-        $this->customer     = Customer::query()->onlyTrashed()->findOrFail($id);
+        $this->customer     = Customer::onlyTrashed()->findOrFail($id);
         $this->restoreModal = true;
     }
 
