@@ -11,7 +11,7 @@ class Restore extends Component
 {
     public Customer $customer;
 
-    public bool $modal = false;
+    public bool $restoreModal = false;
 
     public function render(): View
     {
@@ -21,14 +21,14 @@ class Restore extends Component
     #[On('customer::restore')]
     public function confirmAction(int $id): void
     {
-        $this->customer = Customer::query()->onlyTrashed()->findOrFail($id);
-        $this->modal    = true;
+        $this->customer     = Customer::query()->onlyTrashed()->findOrFail($id);
+        $this->restoreModal = true;
     }
 
     public function restore(): void
     {
         $this->customer->restore();
-        $this->modal = false;
+        $this->restoreModal = false;
         $this->dispatch('customer::reload')->to('customers.index');
     }
 }
