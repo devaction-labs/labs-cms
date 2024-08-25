@@ -22,7 +22,7 @@ class CompanyDTO
             equity: $data['equity'] ?? null,
             nature: NatureDTO::fromArray($data['nature'] ?? []),
             size: SizeDTO::fromArray($data['size'] ?? []),
-            members: array_map(fn ($member) => MemberDTO::fromArray($member), $data['members'] ?? []),
+            members: array_map(static fn ($member) => MemberDTO::fromArray($member), $data['members'] ?? []),
             customerId: $customerId,
         );
     }

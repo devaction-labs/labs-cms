@@ -34,11 +34,11 @@ class CnpjDataDTO
             statusDate: $response['statusDate'] ?? null,
             status: StatusDTO::fromArray($response['status'] ?? []),
             address: AddressDTO::fromArray($response['address'] ?? []),
-            phones: array_map(fn ($phone) => PhoneDTO::fromArray($phone), $response['phones'] ?? []),
-            emails: array_map(fn ($email) => EmailDTO::fromArray($email), $response['emails'] ?? []),
+            phones: array_map(static fn ($phone) => PhoneDTO::fromArray($phone), $response['phones'] ?? []),
+            emails: array_map(static fn ($email) => EmailDTO::fromArray($email), $response['emails'] ?? []),
             mainActivity: ActivityDTO::fromArray($response['mainActivity'] ?? []),
-            sideActivities: array_map(fn ($activity) => ActivityDTO::fromArray($activity), $response['sideActivities'] ?? []),
-            registrations: array_map(fn ($registration) => RegistrationDTO::fromArray($registration), $response['registrations'] ?? []),
+            sideActivities: array_map(static fn ($activity) => ActivityDTO::fromArray($activity), $response['sideActivities'] ?? []),
+            registrations: array_map(static fn ($registration) => RegistrationDTO::fromArray($registration), $response['registrations'] ?? []),
             customerId: $customerId,
         );
     }
