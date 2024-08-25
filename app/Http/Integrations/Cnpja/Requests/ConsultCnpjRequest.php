@@ -5,7 +5,7 @@ namespace App\Http\Integrations\Cnpja\Requests;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
-class ConsultCnpj extends Request
+class ConsultCnpjRequest extends Request
 {
     /**
      * The HTTP method of the request

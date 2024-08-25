@@ -11,10 +11,10 @@ class CompanyDTO
         public NatureDTO $nature,
         public SizeDTO $size,
         public array $members,
-        public int $customerId
+        public ?int $customerId = null
     ) {}
 
-    public static function fromArray(array $data, int $customerId): self
+    public static function fromArray(array $data, ?int $customerId = null): self
     {
         return new self(
             id: $data['id'] ?? null,

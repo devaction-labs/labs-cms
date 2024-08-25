@@ -19,10 +19,10 @@ class CnpjDataDTO
         public ActivityDTO $mainActivity,
         public array $sideActivities,
         public array $registrations,
-        public int $customerId
+        public ?int $customerId = null
     ) {}
 
-    public static function fromArray(array $response, int $customerId): self
+    public static function fromArray(array $response, ?int $customerId = null): self
     {
         return new self(
             updated: $response['updated'] ?? null,
