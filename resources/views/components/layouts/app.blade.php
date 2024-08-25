@@ -17,10 +17,6 @@
     <livewire:admin.users.stop-impersonate />
 @endif
 
-@if(!app()->environment('production'))
-    <x-devbar />
-@endif
-
 <x-main full-width>
     <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 bg-neutral text-white">
         <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">DevAction</div>
@@ -58,6 +54,10 @@
     </x-slot:sidebar>
 
     <x-slot:content>
+        @if(!app()->environment('production'))
+            <x-devbar />
+        @endif
+        
         {{ $slot }}
     </x-slot:content>
 </x-main>

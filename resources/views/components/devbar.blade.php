@@ -1,5 +1,5 @@
 <div
-    class="flex items-center p-2 bg-neutral py-1.5 text-center text-xs text-neutral-content md:text-sm space-x-2 justify-end">
+    class="relative w-full py-1.5 text-xs text-neutral-content md:text-sm flex items-center justify-end space-x-2">
     <livewire:dev.branch-env />
     <livewire:dev.login />
 </div>
