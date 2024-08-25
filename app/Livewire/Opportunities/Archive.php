@@ -21,7 +21,7 @@ class Archive extends Component
     #[On('opportunity::archive')]
     public function confirmAction(int $id): void
     {
-        $this->opportunity          = Opportunity::findOrFail($id);
+        $this->opportunity          = Opportunity::query()->findOrFail($id);
         $this->opportunitiesArchive = true;
     }
 

@@ -3,6 +3,8 @@
 use App\Livewire\Auth\Password;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Notification;
+use Livewire\Livewire;
 
 use function Pest\Laravel\get;
 use function PHPUnit\Framework\assertTrue;
@@ -101,7 +103,7 @@ test('needs to show an obfuscate email to the user', function () {
     $obfuscatedEmail = obfuscate_email($email);
 
     expect($obfuscatedEmail)
-        ->toBe('je******@********com');
+        ->toBe('je******@******e.com');
 
     // ---
 

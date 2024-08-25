@@ -3,6 +3,7 @@
 use App\Livewire\Customers;
 use App\Models\Customer;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Livewire\Livewire;
 
 use function Pest\Laravel\assertSoftDeleted;
 
@@ -24,7 +25,7 @@ test('when confirming we should load the customer and set modal to true', functi
     Livewire::test(Customers\Archive::class)
         ->call('confirmAction', $customer->id)
         ->assertSet('customer.id', $customer->id)
-        ->assertSet('modal', true);
+        ->assertSet('archiveModal', true);
 });
 
 test('after archiving we should dispatch an event to tell the list to reload', function () {

@@ -20,14 +20,7 @@ trait HasTable
 
     public string $sortColumnBy = 'id';
 
-    public int $perPage = 15;
-
-    /** @return Header[] */
-    abstract public function tableHeaders(): array;
-
-    abstract public function query(): Builder;
-
-    abstract public function searchColumns(): array;
+    public int $perPage = 10;
 
     #[Computed]
     public function items(): LengthAwarePaginator
@@ -42,6 +35,10 @@ trait HasTable
             ->paginate($this->perPage);
     }
 
+    abstract public function query(): Builder;
+
+    abstract public function searchColumns(): array;
+
     #[Computed]
     public function headers(): array
     {
@@ -55,6 +52,9 @@ trait HasTable
                 ];
             })->toArray();
     }
+
+    /** @return Header[] */
+    abstract public function tableHeaders(): array;
 
     public function sortBy(string $column, string $direction): void
     {

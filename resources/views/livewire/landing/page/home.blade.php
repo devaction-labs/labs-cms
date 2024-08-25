@@ -4,17 +4,17 @@
             <div class="grid gap-12 lg:grid-cols-2">
                 <div>
                     <h1 class="text-4xl font-black tracking-tighter lg:text-6xl lg:leading-none">
-                        Revolutionize your business with our
-                        <span class="text-primary">dynamic SaaS</span>
-                        solutions.
+                        Transforme seu negócio com
+                        <span class="text-primary">Sistemas Dinâmicos</span>
+                        com soluções inovadoras.
                     </h1>
                     <p class="mt-8 text-lg">
-                        Elevate your business to new heights with our cutting-edge SaaS solutions. Seamlessly
-                        integrate powerful features, flexible pricing, and dedicated support.
+                        Alcance novos patamares com InvoiceX, Anexia e MathDash. Integre funcionalidades poderosas,
+                        preços flexíveis e suporte dedicado ao seu negócio.
                     </p>
                     <div class="mt-16 inline-flex gap-3">
-                        <button class="btn btn-primary">Get Started</button>
-                        <button class="btn btn-ghost">Learn More</button>
+                        <button class="btn btn-primary">Comece Agora<</button>
+                        <button class="btn btn-ghost">Saiba Mais</button>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                         <img
                             alt="SaaS"
                             class="rounded-lg"
-                            src="assets/images/landing/21478246-Omoi-Customer-Relationship-Management-Dashboard.png" />
+                            src="{{ asset('assets/images/landing/21478246-Omoi-Customer-Relationship-Management-Dashboard.png') }}" />
                     </div>
                 </div>
             </div>
@@ -39,23 +39,23 @@
             <div class="mt-12 grid grid-cols-2 justify-center gap-8 sm:grid-cols-3 md:grid-cols-5">
                 <img
                     class="mx-auto h-8 cursor-pointer grayscale transition-all duration-500 hover:grayscale-0"
-                    src="assets/images/logo/google.svg"
+                    src="{{ asset('assets/images/logo/google.svg')  }}"
                     alt="google logo" />
                 <img
                     class="mx-auto h-6 cursor-pointer grayscale transition-all duration-500 hover:grayscale-0"
-                    src="assets/images/logo/microsoft.svg"
+                    src="{{ asset('assets/images/logo/microsoft.svg') }}"
                     alt="microsoft logo" />
                 <img
                     class="mx-auto hidden h-6 cursor-pointer grayscale transition-all duration-500 hover:grayscale-0 md:inline"
-                    src="assets/images/logo/netflix.svg"
+                    src="{{ asset('assets/images/logo/netflix.svg') }}"
                     alt="netflix logo" />
                 <img
                     class="mx-auto hidden h-8 cursor-pointer grayscale transition-all duration-500 hover:grayscale-0 md:inline"
-                    src="assets/images/logo/spotify.svg"
+                    src="{{ asset('assets/images/logo/spotify.svg') }}"
                     alt="spotify logo" />
                 <img
                     class="mx-auto hidden h-8 cursor-pointer grayscale transition-all duration-500 hover:grayscale-0 sm:inline"
-                    src="assets/images/logo/paypal.svg"
+                    src="{{ asset('assets/images/logo/paypal.svg') }}"
                     alt="paypal logo" />
             </div>
         </div>
@@ -69,10 +69,10 @@
 
         <div class="container">
             <div class="flex flex-col items-center">
-                <h2 class="inline text-4xl font-semibold">Magical Things</h2>
+                <h2 class="inline text-4xl font-semibold">Coisas Incríveis</h2>
 
                 <p class="mt-4 text-lg sm:text-center">
-                    Unlock the Full Potential of Your Business with Our SaaS Platform's Key Features
+                    Libere o Potencial Total do Seu Negócio com os Recursos Principais de Nossa Plataforma
                 </p>
             </div>
 
@@ -82,41 +82,40 @@
                     <img
                         alt="saas img"
                         class="overflow-hidden rounded-ss-lg"
-                        src="assets/images/landing/16232074-Smart-House-UI.png" />
+                        src="{{ asset('assets/images/landing/16232074-Smart-House-UI.png') }}" />
                 </div>
 
                 <div class="lg:mt-8">
-                    <div class="badge badge-primary">Dashboard</div>
-                    <h3 class="mt-2 text-3xl font-semibold">Fully Controlled Panel</h3>
+                    <div class="badge badge-primary">Painel</div>
+                    <h3 class="mt-2 text-3xl font-semibold">Painel Totalmente Controlado</h3>
                     <p class="mt-2 text-base font-medium">
-                        Elevate control with our dynamic SaaS dashboard—real-time insights, intuitive
-                        navigation, seamless customization.
+                        Melhore o controle com nosso painel dinâmico—dados em tempo real, navegação intuitiva e
+                        personalização fluida.
                     </p>
 
                     <ul class="mt-4 list-inside list-disc text-base">
-                        <li>Real-Time Data Insights</li>
-                        <li>Customizable Widgets</li>
-                        <li>Intuitive User Interface</li>
-                        <li>Performance Metrics at a Glance</li>
+                        <li>Insights de Dados em Tempo Real</li>
+                        <li>Widgets Personalizáveis</li>
+                        <li>Interface Intuitiva</li>
+                        <li>Métricas de Desempenho à Vista</li>
                     </ul>
                 </div>
             </div>
 
             <div class="mt-8 grid gap-8 lg:mt-20 lg:grid-cols-2 lg:gap-12">
                 <div>
-                    <div class="badge badge-primary">Control</div>
-                    <h3 class="mt-2 text-3xl font-semibold">Managing Entities</h3>
+                    <div class="badge badge-primary">Controle</div>
+                    <h3 class="mt-2 text-3xl font-semibold">Gerenciamento de Entidades</h3>
                     <p class="mt-2 text-base">
-                        Our SaaS platform offers seamless management, allowing you to effortlessly oversee
-                        users, projects, and resources in one centralized hub. Gain real-time insights,
-                        streamline workflows, and optimize resource allocation for unparalleled efficiency.
+                        Nossa plataforma permite gerenciar usuários, projetos e recursos em um único lugar. Obtenha
+                        insights em tempo real, otimize fluxos de trabalho e maximize a eficiência.
                     </p>
 
                     <ul class="mt-4 list-inside list-disc text-base">
-                        <li>User-Friendly Tools</li>
-                        <li>Resource Management</li>
-                        <li>Task Assignment</li>
-                        <li>Robust Control</li>
+                        <li>Ferramentas Fáceis de Usar</li>
+                        <li>Gestão de Recursos</li>
+                        <li>Atribuição de Tarefas</li>
+                        <li>Controle Robusto</li>
                     </ul>
                 </div>
 
@@ -126,7 +125,7 @@
                         <img
                             alt="saas img"
                             class="overflow-hidden rounded-ss-lg"
-                            src="assets/images/landing/18580477-Skylight-Mobile-Property-Management-Dashboard.png" />
+                            src="{{ asset('assets/images/landing/18580477-Skylight-Mobile-Property-Management-Dashboard.png') }}" />
                     </div>
                 </div>
             </div>
@@ -137,51 +136,50 @@
                     <img
                         alt="saas img"
                         class="overflow-hidden rounded-ss-lg"
-                        src="assets/images/landing/18382537-WorkSpace-Work-Space-Booking-Apps.png" />
+                        src="{{ asset('assets/images/landing/18382537-WorkSpace-Work-Space-Booking-Apps.png') }}" />
                 </div>
 
                 <div class="lg:mt-8">
-                    <div class="badge badge-primary">Workflows</div>
-                    <h3 class="mt-2 text-3xl font-semibold">Seamless Integrations</h3>
+                    <div class="badge badge-primary">Fluxos de Trabalho</div>
+                    <h3 class="mt-2 text-3xl font-semibold">Integrações Sem Costura</h3>
                     <p class="mt-2 text-base">
-                        Connect key tools seamlessly with our SaaS platform, streamlining your processes and
-                        boosting productivity. Experience a cohesive digital ecosystem that empowers your
-                        business for innovation and growth.
+                        Conecte ferramentas essenciais com nossa plataforma, otimizando processos e aumentando a
+                        produtividade. Crie um ecossistema digital coeso para inovação e crescimento.
                     </p>
 
                     <ul class="mt-4 list-inside list-disc text-base">
-                        <li>Real-time chat with Slack</li>
-                        <li>Engage your customer with Email</li>
-                        <li>Getting order from Amazon</li>
-                        <li>Using Ai from OpenAI</li>
+                        <li>Chat em tempo real com Slack</li>
+                        <li>Engaje seus clientes por Email</li>
+                        <li>Receba pedidos da Amazon</li>
+                        <li>Use IA do OpenAI</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
+
     <section class="py-8 lg:py-20 " id="integrations">
         <div class="container">
             <div class="text-center">
-                <h2 class="text-4xl font-semibold">Quick Integrations</h2>
+                <h2 class="text-4xl font-semibold">Integrações Rápidas</h2>
                 <p class="mt-2 text-lg sm:text-center">
-                    Effortless Collaboration: Seamlessly integrate tools for unified efficiency with our
-                    SaaS platform.
+                    Colaboração Sem Esforço: Integre ferramentas para eficiência unificada com nossa plataforma SaaS.
                 </p>
             </div>
             <div class="mt-12 rounded-lg bg-base-200 p-8 text-base-content lg:px-24 lg:py-14">
                 <div class="grid items-center gap-8 lg:grid-cols-2">
                     <div class="inline-flex flex-col text-center lg:text-start">
                         <h3 class="text-3xl font-medium leading-snug">
-                            Effortless expert Saas integrations, just a snap away.
+                            Integrações especializadas em SaaS, a um clique de distância.
                         </h3>
                         <p class="mt-4 text-lg leading-normal">
-                            Elevate efficiency with our SaaS platform's seamless integration feature. Connect
-                            tools effortlessly for a unified digital workspace.
+                            Aumente a eficiência com a integração perfeita da nossa plataforma SaaS. Conecte ferramentas
+                            sem esforço para um espaço de trabalho digital unificado.
                         </p>
 
                         <div class="mt-8 flex justify-center lg:justify-start">
-                            <button class="btn btn-primary">Quick Connect</button>
+                            <button class="btn btn-primary">Conexão Rápida</button>
                         </div>
                     </div>
 
@@ -189,37 +187,41 @@
                         <div class="text-center">
                             <div
                                 class="inline-flex h-24 w-24 items-center justify-center rounded-full bg-white shadow">
-                                <img alt="amazon" class="h-12 w-12" src="assets/images/logo/amazon-mini.svg" />
+                                <img alt="amazon" class="h-12 w-12"
+                                     src="{{ asset('assets/images/logo/amazon-mini.sv') }}g" />
                             </div>
                         </div>
                         <div class="text-center">
                             <div
                                 class="inline-flex h-24 w-24 items-center justify-center rounded-full bg-white shadow">
-                                <img alt="slack" class="h-12 w-12" src="assets/images/logo/slack.svg" />
+                                <img alt="slack" class="h-12 w-12" src="{{ asset('assets/images/logo/slack.svg') }}" />
                             </div>
                         </div>
                         <div class="text-center">
                             <div
                                 class="inline-flex h-24 w-24 items-center justify-center rounded-full bg-white shadow">
-                                <img alt="openai" class="h-12 w-12" src="assets/images/logo/openai.svg" />
+                                <img alt="openai" class="h-12 w-12"
+                                     src="{{ asset('assets/images/logo/openai.svg') }}" />
                             </div>
                         </div>
                         <div class="text-center">
                             <div
                                 class="inline-flex h-24 w-24 items-center justify-center rounded-full bg-white shadow">
-                                <img alt="meta" class="h-12 w-12" src="assets/images/logo/meta-mini.svg" />
+                                <img alt="meta" class="h-12 w-12"
+                                     src="{{ asset('assets/images/logo/meta-mini.svg') }}" />
                             </div>
                         </div>
                         <div class="text-center">
                             <div
                                 class="inline-flex h-24 w-24 items-center justify-center rounded-full bg-white shadow">
-                                <img alt="whatsapp" class="h-12 w-12" src="assets/images/logo/whatsapp.svg" />
+                                <img alt="whatsapp" class="h-12 w-12"
+                                     src="{{ asset('assets/images/logo/whatsapp.svg') }}" />
                             </div>
                         </div>
                         <div class="text-center">
                             <div
                                 class="inline-flex h-24 w-24 items-center justify-center rounded-full bg-white shadow">
-                                <img alt="x" class="h-12 w-12" src="assets/images/logo/x.svg" />
+                                <img alt="x" class="h-12 w-12" src="{{ asset('assets/images/logo/x.svg') }}" />
                             </div>
                         </div>
                     </div>
@@ -232,7 +234,7 @@
                     <div class="flex items-center justify-between gap-4">
                         <div class="flex items-center gap-4">
                             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-base-200">
-                                <img alt="slack" class="h-8 w-8" src="assets/images/logo/slack.svg" />
+                                <img alt="slack" class="h-8 w-8" src="{{ asset('assets/images/logo/slack.svg') }}" />
                             </div>
                             <h3 class="text-xl font-semibold">Slack</h3>
                         </div>
@@ -241,8 +243,8 @@
                         </button>
                     </div>
                     <p class="mt-4">
-                        Streamline project discussions, share updates, and boost real-time collaboration
-                        effortlessly.
+                        Simplifique discussões de projetos, compartilhe atualizações e impulsione a colaboração em tempo
+                        real sem esforço.
                     </p>
                 </div>
 
@@ -251,7 +253,8 @@
                     <div class="flex items-center justify-between gap-4">
                         <div class="flex items-center gap-4">
                             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-base-200">
-                                <img alt="google drive" class="h-8 w-8" src="assets/images/logo/g-drive.svg" />
+                                <img alt="google drive" class="h-8 w-8"
+                                     src="{{ asset('assets/images/logo/g-drive.svg') }}" />
                             </div>
                             <h3 class="text-xl font-semibold">Google Drive</h3>
                         </div>
@@ -261,8 +264,8 @@
                     </div>
 
                     <p class="mt-4">
-                        File management, Enhance collaboration, and Elevate your productivity with the
-                        convenience of this integrated solution
+                        Gestão de arquivos, melhore a colaboração e aumente a produtividade com a conveniência desta
+                        solução integrada.
                     </p>
                 </div>
 
@@ -274,7 +277,7 @@
                                 <img
                                     alt="bitbucket"
                                     class="h-8 w-8"
-                                    src="assets/images/logo/bitbucket-mini.svg" />
+                                    src="{{ asset('assets/images/logo/bitbucket-mini.svg') }}" />
                             </div>
                             <h3 class="text-xl font-semibold">Bitbucket</h3>
                         </div>
@@ -284,28 +287,29 @@
                     </div>
 
                     <p class="mt-4">
-                        Streamline version control, collaboration, and project management with ease. Embrace
-                        the power of seamless GitHub integration.
+                        Simplifique o controle de versão, colaboração e gestão de projetos com facilidade. Aproveite o
+                        poder da integração perfeita com o GitHub.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+
     <section
         class="py-8 lg:py-20"
         id="pricing"
         x-data="{
-      period: 'monthly',
-      premium: {monthly: '$99', yearly: '$59'},
-      ultimate: {monthly: '$199', yearly: '$119'},
+        period: 'monthly',
+        premium: {monthly: '$99', yearly: '$59'},
+        ultimate: {monthly: '$199', yearly: '$119'},
     }">
         <div class="container">
             <div class="text-center">
-                <h2 class="text-4xl font-semibold">Pricing Plans</h2>
+                <h2 class="text-4xl font-semibold">Planos de Preços</h2>
                 <p class="mt-2 text-lg">
-                    Explore flexible pricing that scales with your needs. No hidden fees, just transparent
-                    options for your success.
+                    Explore preços flexíveis que escalam conforme suas necessidades. Sem taxas ocultas, apenas opções
+                    transparentes para seu sucesso com Anexia, InvoiceX e MathDash.
                 </p>
             </div>
             <div class="mt-6 flex justify-center">
@@ -314,13 +318,13 @@
                         class="tab lg:px-10"
                         :class="{'tab-active': period === 'monthly'}"
                         @click="()=>period='monthly'">
-                        Monthly
+                        Mensal
                     </button>
                     <button
                         class="tab indicator lg:px-10"
                         :class="{'tab-active': period === 'yearly'}"
                         @click="()=>period='yearly'">
-                        Yearly
+                        Anual
                         <span class="badge indicator-item badge-neutral">-40%</span>
                     </button>
                 </div>
@@ -328,111 +332,113 @@
             <div class="mt-8 grid gap-8 lg:grid-cols-3">
                 <div class="card border border-base-content/10 p-3 shadow-sm">
                     <div class="card bg-base-200 p-6 text-base-content">
-                        <h3 class="text-xl font-semibold">Free</h3>
+                        <h3 class="text-xl font-semibold">Grátis</h3>
                         <p class="mt-2 flex items-baseline">
                             <span class="text-5xl font-bold tracking-tight">$0</span>
-                            <span class="ml-1 text-xl font-semibold">/month</span>
+                            <span class="ml-1 text-xl font-semibold">/mês</span>
                         </p>
                         <p class="mt-4">
-                            Experience essential features at no cost, setting the foundation for your business
-                            growth.
+                            Experimente recursos essenciais sem custo, estabelecendo a base para o crescimento do seu
+                            negócio.
                         </p>
                     </div>
                     <div class="p-6">
                         <ul class="list-inside list-disc space-y-3 text-base-content" role="list">
                             <li>
-                                <span class="ms-3">For Personal Use</span>
+                                <span class="ms-3">Para Uso Pessoal</span>
                             </li>
                             <li>
-                                <span class="ms-3">20 products</span>
+                                <span class="ms-3">20 produtos</span>
                             </li>
                             <li>
-                                <span class="ms-3">Limited Integrations</span>
+                                <span class="ms-3">Integrações Limitadas</span>
                             </li>
                         </ul>
                     </div>
-                    <button class="btn btn-outline btn-primary btn-block mt-auto">Start for Free</button>
+                    <button class="btn btn-outline btn-primary btn-block mt-auto">Comece Grátis</button>
                 </div>
                 <div class="card border border-base-content/10 bg-base-100 p-3 shadow-sm">
                     <div class="card bg-base-200 p-6 text-base-content">
                         <div class="flex justify-between">
                             <h3 class="text-xl font-semibold text-primary">Premium</h3>
-                            <div class="badge badge-outline text-sm font-medium">Best Offer</div>
+                            <div class="badge badge-outline text-sm font-medium">Melhor Oferta</div>
                         </div>
 
                         <p class="mt-4 flex items-baseline">
-                <span
-                    class="text-5xl font-bold tracking-tight text-primary"
-                    x-text="premium[period]"></span>
-                            <span class="ml-1 text-xl font-semibold">/month</span>
+                        <span
+                            class="text-5xl font-bold tracking-tight text-primary"
+                            x-text="premium[period]"></span>
+                            <span class="ml-1 text-xl font-semibold">/mês</span>
                         </p>
                         <p class="mt-6">
-                            Unlock advanced features and elevate your SaaS experience with our premium plan.
+                            Desbloqueie recursos avançados e eleve sua experiência com Anexia, InvoiceX e MathDash no
+                            plano premium.
                         </p>
                     </div>
                     <div class="p-6">
                         <ul class="list-inside list-disc space-y-3 text-base-content" role="list">
                             <li>
-                                <span class="ms-3">Up to 10 Team Members</span>
+                                <span class="ms-3">Até 10 Membros da Equipe</span>
                             </li>
                             <li>
-                                <span class="ms-3">Unlocked all Apps</span>
+                                <span class="ms-3">Desbloqueie todos os Apps</span>
                             </li>
                             <li>
-                                <span class="ms-3">Use all Integrations</span>
+                                <span class="ms-3">Use todas as Integrações</span>
                             </li>
                             <li>
-                                <span class="ms-3">99.9% Support Response Time</span>
+                                <span class="ms-3">99.9% de Tempo de Resposta de Suporte</span>
                             </li>
                         </ul>
                     </div>
-                    <button class="btn btn-primary btn-block mt-auto">Upgrade to Premium</button>
+                    <button class="btn btn-primary btn-block mt-auto">Faça Upgrade para Premium</button>
                 </div>
                 <div class="card border border-base-content/10 p-3 shadow-sm">
                     <div class="card bg-base-200 p-6">
                         <h3 class="text-xl font-semibold">Ultimate</h3>
                         <p class="mt-4 flex items-baseline">
                             <span class="text-5xl font-bold tracking-tight" x-text="ultimate[period]"></span>
-                            <span class="ml-1 text-xl font-semibold">/month</span>
+                            <span class="ml-1 text-xl font-semibold">/mês</span>
                         </p>
                         <p class="mt-6">
-                            Unleash business potential with our ultimate plan. Maximize features, scalability,
-                            and success.
+                            Libere o potencial máximo do seu negócio com nosso plano ultimate. Maximização de recursos,
+                            escalabilidade e sucesso garantido com Anexia, InvoiceX e MathDash.
                         </p>
                     </div>
                     <div class="p-6">
                         <ul class="list-inside list-disc space-y-3" role="list">
                             <li>
-                                <span class="ms-3">Unlimited Members</span>
+                                <span class="ms-3">Membros Ilimitados</span>
                             </li>
                             <li>
-                                <span class="ms-3">Unlocked all Apps</span>
+                                <span class="ms-3">Desbloqueie todos os Apps</span>
                             </li>
                             <li>
-                                <span class="ms-3">Use all Integrations</span>
+                                <span class="ms-3">Use todas as Integrações</span>
                             </li>
                             <li>
-                                <span class="ms-3">24*7 Quick Support</span>
+                                <span class="ms-3">Suporte Rápido 24x7</span>
                             </li>
                             <li>
-                                <span class="ms-3">Marketing automations</span>
+                                <span class="ms-3">Automatizações de Marketing</span>
                             </li>
                         </ul>
                     </div>
                     <button class="btn btn-outline btn-primary btn-block mt-auto">
-                        Get Ultimate Power
+                        Obtenha o Poder Ultimate
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-8 lg:py-20 " id="faq">
+
+    <section class="py-8 lg:py-20" id="faq">
         <div class="container">
             <div class="text-center">
-                <h2 class="text-4xl font-semibold text-base-content">FAQs</h2>
+                <h2 class="text-4xl font-semibold text-base-content">Perguntas Frequentes</h2>
                 <p class="mt-2 text-lg">
-                    Find solutions, tips, and more to enhance your SaaS experience.
+                    Encontre soluções, dicas e mais para melhorar sua experiência com Anexia, InvoiceX e MathDash.
                 </p>
             </div>
 
@@ -441,62 +447,66 @@
                     <div class="collapse collapse-arrow border border-base-content/10">
                         <input checked="checked" name="faq" type="radio" aria-label="open/close" />
                         <div class="collapse-title text-xl font-medium">
-                            How does SaaS benefit my business?
+                            Como o SaaS beneficia meu negócio?
                         </div>
                         <div class="collapse-content">
                             <p class="text-base">
-                                SaaS offers several advantages, including cost-effectiveness, scalability,
-                                automatic updates, and accessibility. It allows businesses to focus on core
-                                operations while the software provider handles maintenance and updates.
+                                O SaaS oferece várias vantagens, incluindo economia de custos, escalabilidade,
+                                atualizações automáticas e acessibilidade. Permite que as empresas se concentrem em
+                                operações principais, enquanto o provedor de software cuida da manutenção e
+                                atualizações.
                             </p>
                         </div>
                     </div>
                     <div class="collapse collapse-arrow border border-base-content/10">
                         <input name="faq" type="radio" aria-label="open/close" />
                         <div class="collapse-title text-xl font-medium">
-                            What features are included in your SaaS platform?
+                            Quais recursos estão incluídos na sua plataforma SaaS?
                         </div>
                         <div class="collapse-content">
                             <p class="text-base">
-                                Our SaaS platform offers a range of features, including collaborative tools,
-                                real-time analytics, integrations with popular applications, user-friendly
-                                interfaces, and customizable solutions tailored to your business needs.
+                                Nossa plataforma SaaS oferece uma variedade de recursos, incluindo ferramentas
+                                colaborativas, análises em tempo real, integrações com aplicativos populares, interfaces
+                                amigáveis e soluções personalizáveis adaptadas às necessidades do seu negócio em Anexia,
+                                InvoiceX e MathDash.
                             </p>
                         </div>
                     </div>
                     <div class="collapse collapse-arrow border border-base-content/10">
                         <input name="faq" type="radio" aria-label="open/close" />
-                        <div class="collapse-title text-xl font-medium">How can I upgrade my plan?</div>
+                        <div class="collapse-title text-xl font-medium">Como posso fazer upgrade do meu plano?</div>
                         <div class="collapse-content">
                             <p class="text-base">
-                                Upgrading your plan is easy. Log in to your account, go to the billing section,
-                                and choose the plan that suits your business requirements. The upgrade will take
-                                effect immediately.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="collapse collapse-arrow border border-base-content/10">
-                        <input name="faq" type="radio" aria-label="open/close" />
-                        <div class="collapse-title text-xl font-medium">
-                            Is there a trial period for your SaaS platform?
-                        </div>
-                        <div class="collapse-content">
-                            <p class="text-base">
-                                Yes, we offer a free trial period for you to explore and experience our platform's
-                                features. No credit card is required during the trial period.
+                                Fazer upgrade do seu plano é fácil. Faça login na sua conta, vá para a seção de
+                                faturamento e escolha o plano que atende às necessidades do seu negócio. O upgrade
+                                entrará em vigor imediatamente.
                             </p>
                         </div>
                     </div>
                     <div class="collapse collapse-arrow border border-base-content/10">
                         <input name="faq" type="radio" aria-label="open/close" />
                         <div class="collapse-title text-xl font-medium">
-                            How is data security handled on your platform?
+                            Há um período de teste para sua plataforma SaaS?
                         </div>
                         <div class="collapse-content">
                             <p class="text-base">
-                                We prioritize data security. Our platform employs encryption, access controls, and
-                                regular security audits to safeguard your data. We comply with industry standards
-                                to ensure your information is secure.
+                                Sim, oferecemos um período de teste gratuito para você explorar e experimentar os
+                                recursos da nossa plataforma, incluindo Anexia, InvoiceX e MathDash. Não é necessário
+                                cartão de crédito durante o período de teste.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="collapse collapse-arrow border border-base-content/10">
+                        <input name="faq" type="radio" aria-label="open/close" />
+                        <div class="collapse-title text-xl font-medium">
+                            Como é tratada a segurança de dados na sua plataforma?
+                        </div>
+                        <div class="collapse-content">
+                            <p class="text-base">
+                                Priorizamos a segurança dos dados. Nossa plataforma emprega criptografia, controles de
+                                acesso e auditorias de segurança regulares para proteger seus dados. Cumprimos os
+                                padrões da indústria para garantir que suas informações estejam seguras em Anexia,
+                                InvoiceX e MathDash.
                             </p>
                         </div>
                     </div>
@@ -504,4 +514,5 @@
             </div>
         </div>
     </section>
+
 </div>

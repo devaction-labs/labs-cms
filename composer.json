@@ -6,10 +6,12 @@
         "laravel",
         "framework"
     ],
+    "version": "0.0.1",
     "license": "MIT",
     "require": {
         "php": "^8.3",
         "captainhook/captainhook": "^5.23",
+        "davidhsianturi/blade-bootstrap-icons": "^1.5",
         "doctrine/dbal": "^3",
         "guzzlehttp/guzzle": "^7",
         "laravel/framework": "^11",
@@ -17,12 +19,14 @@
         "laravel/tinker": "^2",
         "livewire/livewire": "^3",
         "owen-it/laravel-auditing": "^13",
+        "owenvoke/blade-fontawesome": "^2.6",
         "robsontenorio/mary": "^1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",
         "christophrumpel/missing-livewire-assertions": "^2.4",
         "fakerphp/faker": "^1.9.1",
+        "laradumps/laradumps": "^3.0",
         "larastan/larastan": "^2.9",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",

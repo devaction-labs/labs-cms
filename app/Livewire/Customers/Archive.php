@@ -11,7 +11,7 @@ class Archive extends Component
 {
     public Customer $customer;
 
-    public bool $modal = false;
+    public bool $archiveModal = false;
 
     public function render(): View
     {
@@ -21,14 +21,14 @@ class Archive extends Component
     #[On('customer::archive')]
     public function confirmAction(int $id): void
     {
-        $this->customer = Customer::findOrFail($id);
-        $this->modal    = true;
+        $this->customer     = Customer::findOrFail($id);
+        $this->archiveModal = true;
     }
 
     public function archive(): void
     {
         $this->customer->delete();
-        $this->modal = false;
+        $this->archiveModal = false;
         $this->dispatch('customer::reload')->to('customers.index');
     }
 }

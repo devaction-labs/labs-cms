@@ -3,8 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "prepare": "husky install"
+        "build": "vite build"
     },
     "devDependencies": {
         "@nextapps-be/livewire-sortablejs": "^0.4.1",
@@ -12,8 +11,7 @@
         "@tailwindcss/typography": "^0.5.14",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
-        "daisyui": "^4",
-        "husky": "^8.0.3",
+        "daisyui": "^4.12.10",
         "laravel-vite-plugin": "^1.0.5",
         "lint-staged": "^15.2.9",
         "postcss": "^8.4.41",

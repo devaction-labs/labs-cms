@@ -35,5 +35,20 @@ function version(): string
         throw new RuntimeException('Version key not found in composer.json');
     }
 
-    return 'Version:' . $composerData['version'];
+    return 'Version: ' . $composerData['version'];
+}
+
+if (!function_exists('extractUsername')) {
+    function extractUsername(string $url, int $maxLength = 15): string
+    {
+        $path = parse_url($url, PHP_URL_PATH);
+
+        $username = basename($path);
+
+        if (strlen($username) > $maxLength) {
+            return substr($username, 0, $maxLength) . '...';
+        }
+
+        return $username;
+    }
 }
