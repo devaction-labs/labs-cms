@@ -17,8 +17,14 @@
     <livewire:admin.users.stop-impersonate />
 @endif
 
-<x-main full-width>
-    <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 bg-neutral text-white">
+<x-main :full-width="true">
+    <x-slot:sidebar
+        drawer="main-drawer"
+        collapsible
+        class="pt-3 bg-neutral text-white"
+        collapse-text="{{ version() }}"
+        style="height: 100vh; overflow-y: auto;"
+    >
         <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">DevAction</div>
         <div class="display-when-collapsed ml-5 font-black text-4xl text-orange-500">DA</div>
         <x-menu activate-by-route active-bg-color="bg-neutral-300/10">
@@ -57,7 +63,7 @@
         @if(!app()->environment('production'))
             <x-devbar />
         @endif
-        
+
         {{ $slot }}
     </x-slot:content>
 </x-main>
