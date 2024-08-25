@@ -1,7 +1,13 @@
 <div>
     <x-header separator>
         <x-slot:title>
-            Customer > {{ $customer->name }}
+            <livewire:component.breadcrumb :items="[
+                ['label' => 'Home', 'url' => route('dashboard')],
+                ['label' => 'Customers', 'url' => route('customers')],
+                ['label' => $customer->name, 'url' => '']
+             ]"
+            />
+
         </x-slot:title>
     </x-header>
 
@@ -52,7 +58,7 @@
         <div class="bg-base-200 rounded-md text-base col-span-2">
             <div class="py-2 bg-base-100 rounded-t-md w-full space-x-4 px-4">
                 <x-ui.tab :href="route('customers.show', [$customer, 'opportunities'])">
-                    Opportunities
+                    {{ __('Opportunities') }}
                 </x-ui.tab>
                 <x-ui.tab :href="route('customers.show', [$customer, 'tasks'])">
                     Tasks
