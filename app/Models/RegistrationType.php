@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+/**
+ * @property string $id
+ * @property string $text
+ * @property string $registration_id
+ */
+class RegistrationType extends Model
+{
+    use HasFactory;
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    public function registrations(): HasMany
+    {
+        return $this->hasMany(Registration::class);
+    }
+}
