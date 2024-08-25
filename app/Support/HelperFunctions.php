@@ -37,3 +37,21 @@ function version(): string
 
     return 'Version:' . $composerData['version'];
 }
+
+if (!function_exists('extractUsername')) {
+    function extractUsername(string $url, int $maxLength = 15): string
+    {
+        // Parse a URL e obtém o caminho
+        $path = parse_url($url, PHP_URL_PATH);
+
+        // Pega o nome do usuário (a última parte do caminho da URL)
+        $username = basename($path);
+
+        // Se o nome de usuário for maior que o limite, trunca-o
+        if (strlen($username) > $maxLength) {
+            return substr($username, 0, $maxLength) . '...';
+        }
+
+        return $username;
+    }
+}
