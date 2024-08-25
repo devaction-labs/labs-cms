@@ -20,7 +20,9 @@
         "livewire/livewire": "^3",
         "owen-it/laravel-auditing": "^13",
         "owenvoke/blade-fontawesome": "^2.6",
-        "robsontenorio/mary": "^1"
+        "robsontenorio/mary": "^1",
+        "saloonphp/laravel-plugin": "^3.5",
+        "saloonphp/saloon": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",
