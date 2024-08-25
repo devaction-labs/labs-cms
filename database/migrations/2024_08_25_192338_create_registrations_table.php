@@ -8,7 +8,11 @@ return new class() extends Migration {
     public function up(): void
     {
         Schema::create('registrations', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('state');
+            $table->string('number');
+            $table->boolean('enabled');
+            $table->date('status_date');
             $table->timestamps();
         });
     }
