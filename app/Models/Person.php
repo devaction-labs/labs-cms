@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property string $id
  * @property string $name
- * @property string $code
+ * @property string $type
+ * @property int $age
+ * @property string $tax_id
+ * @property string $customer_id
  */
-class Country extends Model
+class Person extends Model
 {
     use HasFactory;
     use HasUuids;
@@ -21,8 +24,8 @@ class Country extends Model
 
     protected $keyType = 'string';
 
-    public function addresses(): HasMany
+    public function customer(): BelongsTo
     {
-        return $this->hasMany(Address::class);
+        return $this->belongsTo(Customer::class);
     }
 }
