@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Member;
+use App\Models\{Customer};
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +12,9 @@ return new class() extends Migration {
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('type');
-            $table->integer('age');
+            $table->string('age');
             $table->string('tax_id');
-
-            $table->foreignIdFor(Member::class)->constrained();
+            $table->foreignIdFor(Customer::class)->constrained();
             $table->timestamps();
         });
     }

@@ -24,15 +24,15 @@ class SaveCnpjDataAction
 {
     public function execute(CnpjDataDTO $dto, array $data): Company
     {
-        return DB::transaction(function () use ($dto, $data) {
+        return DB::transaction(function () use ($dto) {
 
             // Salvando ou criando o Customer
             $customer = Customer::firstOrCreate(
                 ['id' => $dto->customerId],
                 [
-                    'name'   => $data['name'],
-                    'tax_id' => $data['tax_id'],
-                    'email'  => $data['email'],
+                    'name'   => $dto->company->name,
+                    'tax_id' => $dto->taxId,
+                    'email'  => !empty($dto->emails) ? $dto->emails[0]->address : null,
                 ]
             );
 
@@ -72,6 +72,7 @@ class SaveCnpjDataAction
             );
 
             foreach ($dto->emails as $emailDTO) {
+
                 Email::query()->firstOrCreate(
                     ['email' => $emailDTO->address, 'customer_id' => $customer->id],
                     ['domain' => $emailDTO->domain]
@@ -87,13 +88,16 @@ class SaveCnpjDataAction
 
             foreach ($dto->sideActivities as $activityDTO) {
                 Activity::query()->firstOrCreate(
-                    ['id' => $activityDTO->id, 'customer_id' => $customer->id],
-                    ['text' => $activityDTO->text]
+                    ['code' => $activityDTO->id],
+                    [
+                        'text'        => $activityDTO->text,
+                        'customer_id' => $customer->id,
+                    ]
                 );
             }
 
             foreach ($dto->company->members as $memberDTO) {
-                $role   = MemberRole::query()->firstOrCreate(['id' => $memberDTO->role->id], ['name' => $memberDTO->role->text]);
+                $role   = MemberRole::query()->firstOrCreate(['id' => $memberDTO->role->id], ['code' => $memberDTO->role->id, 'text' => $memberDTO->role->text]);
                 $person = Person::query()->firstOrCreate(
                     ['id' => $memberDTO->person->id],
                     [
@@ -112,8 +116,8 @@ class SaveCnpjDataAction
             }
 
             foreach ($dto->registrations as $registrationDTO) {
-                $status = Status::query()->firstOrCreate(['id' => $registrationDTO->status->id], ['text' => $registrationDTO->status->text]);
-                $type   = RegistrationType::query()->firstOrCreate(['id' => $registrationDTO->type->id], ['text' => $registrationDTO->type->text]);
+                $status = Status::query()->firstOrCreate(['code' => $registrationDTO->status->id], ['text' => $registrationDTO->status->text]);
+                $type   = RegistrationType::query()->firstOrCreate(['code' => $registrationDTO->type->id], ['text' => $registrationDTO->type->text]);
 
                 Registration::query()->updateOrCreate(
                     ['customer_id' => $customer->id, 'state' => $registrationDTO->state],

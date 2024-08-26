@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\{Company, Member, Person};
+use App\Models\{Company, MemberRole, Person};
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,8 +10,8 @@ return new class() extends Migration {
     {
         Schema::table('members', function (Blueprint $table) {
             $table->foreignIdFor(Company::class)->constrained();
-            $table->foreignIdFor(Member::class)->constrained();
             $table->foreignIdFor(Person::class)->constrained();
+            $table->foreignIdFor(MemberRole::class)->constrained();
         });
     }
 

@@ -9,9 +9,8 @@ return new class() extends Migration {
     {
         Schema::create('member_roles', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
-            $table->string('type');
-            $table->string('age');
+            $table->integer('code');
+            $table->string('text');
             $table->timestamps();
         });
     }

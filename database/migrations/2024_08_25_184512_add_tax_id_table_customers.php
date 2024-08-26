@@ -9,6 +9,8 @@ return new class() extends Migration {
     {
         Schema::table('customers', function (Blueprint $table) {
             $table->string('tax_id')->nullable()->after('name');
+            $table->unique(['email', 'tax_id']);
+            $table->index('tax_id');
         });
     }
 
@@ -16,6 +18,8 @@ return new class() extends Migration {
     {
         Schema::table('customers', function (Blueprint $table) {
             $table->dropColumn('tax_id');
+            $table->dropUnique(['email', 'tax_id']);
+            $table->dropIndex(['tax_id']);
         });
     }
 };
