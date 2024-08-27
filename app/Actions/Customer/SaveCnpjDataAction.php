@@ -26,7 +26,6 @@ class SaveCnpjDataAction
     {
         return DB::transaction(function () use ($dto) {
 
-            // Salvando ou criando o Customer
             $customer = Customer::firstOrCreate(
                 ['id' => $dto->customerId],
                 [
@@ -36,8 +35,8 @@ class SaveCnpjDataAction
                 ]
             );
 
-            $nature = Nature::query()->firstOrCreate(['id' => $dto->company->nature->id], ['text' => $dto->company->nature->text]);
-            $size   = Size::query()->firstOrCreate(['id' => $dto->company->size->id], ['acronym' => $dto->company->size->acronym, 'text' => $dto->company->size->text]);
+            $nature = Nature::query()->firstOrCreate(['code' => $dto->company->nature->id], ['text' => $dto->company->nature->text]);
+            $size   = Size::query()->firstOrCreate(['code' => $dto->company->size->id], ['acronym' => $dto->company->size->acronym, 'text' => $dto->company->size->text]);
 
             $company = Company::query()->updateOrCreate(
                 ['customer_id' => $customer->id],

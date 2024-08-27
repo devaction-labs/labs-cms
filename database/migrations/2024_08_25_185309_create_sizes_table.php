@@ -9,6 +9,7 @@ return new class() extends Migration {
     {
         Schema::create('sizes', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->integer('code');
             $table->string('acronym');
             $table->string('text');
             $table->timestamps();

@@ -9,6 +9,7 @@ return new class() extends Migration {
     {
         Schema::create('natures', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->integer('code');
             $table->string('text');
             $table->timestamps();
         });

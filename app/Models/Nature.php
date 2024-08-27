@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property string $id
- * @property string $name
- * @property string $company_id
+ * @property int $code
+ * @property string $text
  */
 class Nature extends Model
 {
@@ -20,9 +19,4 @@ class Nature extends Model
     public $incrementing = false;
 
     protected $keyType = 'string';
-
-    public function companies(): HasMany
-    {
-        return $this->hasMany(Company::class);
-    }
 }

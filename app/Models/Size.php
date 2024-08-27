@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $id
  * @property string $acronym
  * @property string $text
- * @property string $company_id
  */
 class Size extends Model
 {
