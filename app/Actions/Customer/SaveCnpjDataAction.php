@@ -24,6 +24,8 @@ class SaveCnpjDataAction
 {
     public function execute(CnpjDataDTO $dto, array $data): Company
     {
+        ds($dto->customerId);
+
         return DB::transaction(function () use ($dto) {
 
             $customer = Customer::firstOrCreate(
