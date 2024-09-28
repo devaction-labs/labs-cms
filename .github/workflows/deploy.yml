@@ -3,7 +3,7 @@ name: Deploy CI/CD
 on:
   pull_request:
     branches:
-      - master
+      - main
       - stage
 
 jobs:
@@ -75,7 +75,7 @@ jobs:
         run: vendor/bin/pest --parallel
 
   start-deploy:
-    if: ${{ needs.ci-cd-deploy.result == 'success' && (github.event.pull_request.base.ref == 'master') }}
+    if: ${{ needs.ci-cd-deploy.result == 'success' && (github.event.pull_request.base.ref == 'main') }}
     needs: [ ci-cd-deploy ]
     runs-on: ubuntu-latest
     steps:
@@ -86,7 +86,7 @@ jobs:
         run: |
           if [ "${{ github.event.pull_request.base.ref }}" == "stage" ]; then
             echo "DEPLOY_TARGET=Stage" >> $GITHUB_ENV
-          elif [ "${{ github.event.pull_request.base.ref }}" == "master" ]; then
+          elif [ "${{ github.event.pull_request.base.ref }}" == "main" ]; then
             echo "DEPLOY_TARGET=Production" >> $GITHUB_ENV
           fi
 
@@ -108,7 +108,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
   create-tag:
-    if: ${{ needs.start-deploy.result == 'success' && github.event.pull_request.base.ref == 'master' }}
+    if: ${{ needs.start-deploy.result == 'success' && github.event.pull_request.base.ref == 'main' }}
     needs: [ start-deploy ]
     runs-on: ubuntu-latest
     steps:
@@ -142,7 +142,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy-production:
-    if: ${{ needs.create-tag.result == 'success' && github.event.pull_request.base.ref == 'master' }}
+    if: ${{ needs.create-tag.result == 'success' && github.event.pull_request.base.ref == 'main' }}
     needs: [ create-tag ]
     runs-on: ubuntu-latest
     steps:
@@ -162,7 +162,7 @@ jobs:
         run: composer global require laravel/forge-cli
       - name: Deploy Site
         run: |
-          forge server:switch devaction
+          forge server:switch app-server
           forge deploy devaction.com.br
         env:
           FORGE_API_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
@@ -182,7 +182,7 @@ jobs:
       - name: Get latest tag or commit hash
         id: get_tag_or_hash
         run: |
-          if [ "${{ github.event.pull_request.base.ref }}" == "master" ]; then
+          if [ "${{ github.event.pull_request.base.ref }}" == "main" ]; then
             git fetch --tags
             LATEST_TAG=$(git describe --tags --abbrev=0)
             echo "LATEST_TAG_OR_HASH=$LATEST_TAG" >> $GITHUB_ENV
