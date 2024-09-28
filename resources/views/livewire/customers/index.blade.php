@@ -46,7 +46,7 @@
                 id="show-btn-{{ $customer->id }}"
                 wire:key="show-btn-{{ $customer->id }}"
                 href="{{ route('customers.show', $customer) }}"
-                class="btn-sm btn-ghost text-primary"
+                class="text-primary"
             >
                 <x-icon name="o-eye" />
             </a>
