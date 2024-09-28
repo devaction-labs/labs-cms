@@ -24,12 +24,12 @@ test('making sure that the route is protected by the permission BE_AN_ADMIN', fu
 
 test("let's create a livewire component to list all users in the page", function () {
     actingAs(User::factory()->admin()->create());
-    $users = User::factory()->count(10)->create();
+    $users = User::factory()->count(9)->create();
 
     $lw = Livewire::test(Admin\Users\Index::class);
     $lw->assertSet('items', function ($items) {
         expect($items)
-            ->toHaveCount(11);
+            ->toHaveCount(10);
 
         return true;
     });
@@ -156,7 +156,7 @@ it('should be able to paginate the result', function () {
     Livewire::test(Admin\Users\Index::class)
         ->assertSet('items', function (LengthAwarePaginator $items) {
             expect($items)
-                ->toHaveCount(15);
+                ->toHaveCount(10);
 
             return true;
         })

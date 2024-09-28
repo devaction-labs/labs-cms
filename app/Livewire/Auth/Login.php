@@ -5,16 +5,18 @@ namespace App\Livewire\Auth;
 use Illuminate\Contracts\View\{View};
 use Illuminate\Support\Facades\{Auth, RateLimiter};
 use Illuminate\Support\Str;
-use Livewire\Attributes\Layout;
+use Livewire\Attributes\{Layout, On};
 use Livewire\Component;
 
 class Login extends Component
 {
+    public bool $showLogin = false;
+
     public ?string $email = null;
 
     public ?string $password = null;
 
-    #[Layout('components.layouts.guest')]
+    #[Layout('components.layouts.home')]
     public function render(): View
     {
         return view('livewire.auth.login');
@@ -55,5 +57,23 @@ class Login extends Component
         $email = $this->email ?? '';
 
         return Str::transliterate(Str::lower($email) . '|' . request()->ip());
+    }
+
+    #[On('auth::show::login')]
+    public function openLogin(): void
+    {
+        $this->showLogin = true;
+    }
+
+    public function showRecovery(): void
+    {
+        $this->dispatch('show::recovery::form');
+        $this->showLogin = false;
+    }
+
+    public function showRegister(): void
+    {
+        $this->dispatch('auth::show::register');
+        $this->showLogin = false;
     }
 }

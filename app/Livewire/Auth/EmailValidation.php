@@ -15,23 +15,29 @@ class EmailValidation extends Component
 {
     use AuthenticatedUser;
 
+    public bool $show = false;
+
     public ?string $code = null;
 
     public ?string $sendNewCodeMessage = null;
 
-    #[Layout('components.layouts.guest')]
+    public bool $validated = false;
+
+    #[Layout('components.layouts.home-empaty')]
     public function render(): View
     {
         return view('livewire.auth.email-validation');
     }
-
     public function handle(): void
     {
         $this->reset('sendNewCodeMessage');
 
+        $userCode = $this->getAuthenticatedUser()->validation_code;
+
         $this->validate([
-            'code' => function (string $attribute, mixed $value, Closure $fail) {
-                if ($value != $this->getAuthenticatedUser()->validation_code) {
+            'code' => function (string $attribute, mixed $value, Closure $fail) use ($userCode) {
+
+                if ($value != $userCode) {
                     $fail('Invalid code');
                 }
             },
