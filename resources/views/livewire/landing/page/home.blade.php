@@ -43,7 +43,7 @@
                     alt="google logo" />
                 <img
                     class="mx-auto h-6 cursor-pointer grayscale transition-all duration-500 hover:grayscale-0"
-                    src="{{ asset('assets/images/logo/microsoft.svg') }}"
+                    src="{{ asset('assets/images/logo/mgc.svg') }}"
                     alt="microsoft logo" />
                 <img
                     class="mx-auto hidden h-6 cursor-pointer grayscale transition-all duration-500 hover:grayscale-0 md:inline"
