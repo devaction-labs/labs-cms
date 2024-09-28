@@ -20,7 +20,9 @@
         "livewire/livewire": "^3",
         "owen-it/laravel-auditing": "^13",
         "owenvoke/blade-fontawesome": "^2.6",
-        "robsontenorio/mary": "^1"
+        "robsontenorio/mary": "^1",
+        "saloonphp/laravel-plugin": "^3.5",
+        "saloonphp/saloon": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",
@@ -32,8 +34,10 @@
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^8",
-        "pestphp/pest": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest": "^3",
+        "pestphp/pest-plugin-faker": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3",
+        "pestphp/pest-plugin-livewire": "^3.0",
         "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^2.0",
         "spatie/laravel-ray": "^1.33"
