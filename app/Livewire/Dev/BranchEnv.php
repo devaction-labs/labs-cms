@@ -18,9 +18,11 @@ class BranchEnv extends Component
     {
         return <<<'blade'
         <div class="flex items-center space-x-2">
-            <x-badge :value="$this->branch"/>
-            <x-badge :value="$this->env" />
+            <x-badge :value="$this->branch" class="badge-primary"/>
+            <x-badge :value="$this->env" class="badge-primary"/>
+            <span class="font-semibold text-warning">DEVELOPING 🚀</span>
         </div>
+
         blade;
     }
 

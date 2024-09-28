@@ -2,10 +2,12 @@
 
 use App\Livewire\Customers;
 use App\Models\Customer;
+use Livewire\Livewire;
 
 use function Pest\Laravel\assertNotSoftDeleted;
 
 it('should be able to restore a customer', function () {
+    /** @var Customer $customer */
     $customer = Customer::factory()->deleted()->create();
 
     Livewire::test(Customers\Restore::class)
@@ -18,13 +20,14 @@ it('should be able to restore a customer', function () {
 });
 
 test('when confirming we should load the customer and set modal to true', function () {
+    /** @var Customer $customer */
     $customer = Customer::factory()->deleted()->create();
 
     Livewire::test(Customers\Restore::class)
         ->call('confirmAction', $customer->id)
         ->assertSet('customer.id', $customer->id)
-        ->assertSet('modal', true)
-        ->assertPropertyEntangled('modal');
+        ->assertSet('restoreModal', true)
+        ->assertPropertyEntangled('restoreModal');
 });
 
 test('after restoring we should dispatch an event to tell the list to reload', function () {

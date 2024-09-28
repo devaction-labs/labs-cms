@@ -6,9 +6,13 @@ use App\Events\SendNewCode;
 use App\Models\User;
 use App\Notifications\Auth\ValidationCodeNotification;
 use Illuminate\Auth\Events\Registered;
+use Random\RandomException;
 
 class CreateValidationCode
 {
+    /**
+     * @throws RandomException
+     */
     public function handle(Registered|SendNewCode $event): void
     {
         /** @var User $user */

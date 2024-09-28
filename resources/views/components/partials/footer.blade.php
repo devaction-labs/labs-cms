@@ -4,15 +4,18 @@
             <div>
                 <div class="md-12 border-y border-e border-white/20 p-8 sm:p-10 md:px-16 xl:px-40 xl:py-16">
                     <div class="grid grid-cols-2">
-                        <p class="text-xl font-semibold">SaaS Landing</p>
-                        <p class="text-base">Enhance Your IT Infrastructure with Our Innovative Solutions.</p>
+                        <p class="text-xl font-semibold">DevAction Labs</p>
+                        <p class="text-base">
+                            Melhore sua infraestrutura de TI com nossas soluções inovadoras em Anexia, InvoiceX e
+                            MathDash.
+                        </p>
                     </div>
                 </div>
 
                 <div class="md-12 border-e border-white/20 p-8 sm:p-10 md:px-16 xl:px-40 xl:py-16">
                     <div class="grid grid-cols-2 gap-6 md:grid-cols-3">
                         <div class="flex flex-col gap-5">
-                            <h2 class="text-xl font-medium">Company</h2>
+                            <h2 class="text-xl font-medium">Empresa</h2>
                             <div class="space-y-2">
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
@@ -21,7 +24,7 @@
                                 </div>
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
-                                        Our Team
+                                        Nosso Time
                                     </a>
                                 </div>
                                 <div>
@@ -36,42 +39,42 @@
                                 </div>
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
-                                        Contact
+                                        Contato
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="flex flex-col gap-5">
-                            <h2 class="text-xl font-medium">Quick Links</h2>
+                            <h2 class="text-xl font-medium">Links Rápidos</h2>
                             <div class="space-y-2">
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
-                                        Features
+                                        Funcionalidades
                                     </a>
                                 </div>
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
-                                        Pricing
+                                        Preços
                                     </a>
                                 </div>
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
-                                        Products
+                                        Produtos
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="flex flex-col gap-5">
-                            <h2 class="text-xl font-medium">Connecting</h2>
+                            <h2 class="text-xl font-medium">Conectando</h2>
                             <div class="space-y-2">
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
-                                        Contact Us
+                                        Fale Conosco
                                     </a>
                                 </div>
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
-                                        Support
+                                        Suporte
                                     </a>
                                 </div>
                                 <div>
@@ -81,7 +84,7 @@
                                 </div>
                                 <div>
                                     <a class="text-base transition-all duration-500 hover:text-primary" href="#">
-                                        Terms & Conditions
+                                        Termos e Condições
                                     </a>
                                 </div>
                             </div>
@@ -92,19 +95,19 @@
 
             <div class="order-first lg:order-last">
                 <form class="md-12 border-t border-white/20 p-8 sm:p-10 md:px-16 xl:px-40 xl:py-16">
-                    <div class="badge badge-ghost">Demo Request</div>
-                    <h2 class="mt-4 text-3xl font-medium">Help to get started?</h2>
+                    <div class="badge badge-ghost">Solicitar Demonstração</div>
+                    <h2 class="mt-4 text-3xl font-medium">Precisa de ajuda para começar?</h2>
                     <div class="mt-4 space-y-2">
                         <div>
                             <div class="form-control w-full lg:max-w-xs">
                                 <label class="label" for="name">
-                                    <span class="label-text">Full Name</span>
+                                    <span class="label-text">Nome Completo</span>
                                 </label>
                                 <input
                                     autocomplete="name"
                                     id="name"
                                     class="input input-bordered w-full lg:max-w-xs"
-                                    placeholder="Name"
+                                    placeholder="Nome"
                                     type="text"
                                     pattern="^[a-zA-Z0-9_.-]*$"
                                     minlength="1"
@@ -120,7 +123,7 @@
                                     autocomplete="email"
                                     id="email"
                                     class="input join-item input-bordered w-full lg:max-w-xs"
-                                    placeholder="name@site.com"
+                                    placeholder="nome@site.com"
                                     type="email"
                                     required />
                             </div>
@@ -128,10 +131,10 @@
                     </div>
 
                     <div class="mt-6 flex items-center gap-2">
-                        <button class="btn btn-primary">Book a Demo</button>
+                        <button class="btn btn-primary">Agendar Demonstração</button>
                         <div class="btn btn-ghost inline-flex items-center gap-2">
                             <i class="icon-play text-xl"></i>
-                            <span>Video Tour</span>
+                            <span>Tour em Vídeo</span>
                         </div>
                     </div>
                 </form>
@@ -139,9 +142,8 @@
         </div>
 
         <div class="border-t border-white/20 px-8 py-4 text-center lg:px-40">
-            🌼 Made with
+            🌼 Feito com
             <a class="link-hover link" href="https://daisyui.com" target="_blank">daisyUI</a>
         </div>
     </footer>
-
 </div>
