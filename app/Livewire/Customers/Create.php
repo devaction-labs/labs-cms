@@ -10,7 +10,7 @@ class Create extends Component
 {
     public Form $form;
 
-    public bool $modal = false;
+    public bool $customerCreate = false;
 
     public function render(): View
     {
@@ -21,14 +21,14 @@ class Create extends Component
     public function open(): void
     {
         $this->form->resetErrorBag();
-        $this->modal = true;
+        $this->customerCreate = true;
     }
 
     public function save(): void
     {
         $this->form->create();
 
-        $this->modal = false;
+        $this->customerCreate = false;
         $this->dispatch('customer::reload')->to('customers.index');
     }
 }

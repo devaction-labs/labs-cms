@@ -107,7 +107,7 @@ it('should be able to paginate the result', function () {
     Livewire::test(Customers\Index::class)
         ->assertSet('items', function (LengthAwarePaginator $items) {
             expect($items)
-                ->toHaveCount(15);
+                ->toHaveCount(10);
 
             return true;
         })

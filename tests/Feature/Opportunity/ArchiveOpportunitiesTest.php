@@ -3,6 +3,7 @@
 use App\Livewire\Opportunities;
 use App\Models\Opportunity;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Livewire\Livewire;
 
 use function Pest\Laravel\assertSoftDeleted;
 
@@ -24,7 +25,7 @@ test('when confirming we should load the opportunity and set modal to true', fun
     Livewire::test(Opportunities\Archive::class)
         ->call('confirmAction', $opportunity->id)
         ->assertSet('opportunity.id', $opportunity->id)
-        ->assertSet('modal', true);
+        ->assertSet('opportunitiesArchive', true);
 });
 
 test('after archiving we should dispatch an event to tell the list to reload', function () {

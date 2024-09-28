@@ -6,11 +6,13 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Event;
-use Livewire\Attributes\{Layout, Rule};
+use Livewire\Attributes\{Layout, On, Rule};
 use Livewire\Component;
 
 class Register extends Component
 {
+    public bool $showRegister = false;
+
     #[Rule(['required', 'max:255'])]
     public ?string $name = null;
 
@@ -44,5 +46,16 @@ class Register extends Component
         Event::dispatch(new Registered($user));
 
         $this->redirect(route('auth.email-validation'));
+    }
+
+    #[On('auth::show::register')]
+    public function openRegister(): void
+    {
+        $this->showRegister = true;
+    }
+
+    public function closeRegister(): void
+    {
+        $this->showRegister = false;
     }
 }

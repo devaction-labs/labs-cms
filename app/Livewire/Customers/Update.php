@@ -11,7 +11,7 @@ class Update extends Component
 {
     public Form $form;
 
-    public bool $modal = false;
+    public bool $customerUpdate = false;
 
     public function render(): View
     {
@@ -30,14 +30,14 @@ class Update extends Component
         $this->form->setCustomer($customer);
 
         $this->form->resetErrorBag();
-        $this->modal = true;
+        $this->customerUpdate = true;
     }
 
     public function save(): void
     {
         $this->form->update();
 
-        $this->modal = false;
+        $this->customerUpdate = false;
         $this->dispatch('customer::reload')->to('customers.index');
     }
 }

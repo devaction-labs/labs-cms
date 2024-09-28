@@ -11,7 +11,7 @@ return new class() extends Migration {
             $table->id();
             $table->string('type')->default('customer');
             $table->string('name', 200);
-            $table->string('email', 200)->unique()->index();
+            $table->string('email', 200);
             $table->string('phone', 20)->unique()->nullable();
             $table->string('linkedin', 200)->nullable();
             $table->string('facebook', 200)->nullable();

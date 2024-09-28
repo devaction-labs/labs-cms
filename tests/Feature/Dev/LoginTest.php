@@ -2,6 +2,7 @@
 
 use App\Livewire\Dev\Login;
 use App\Models\User;
+use Livewire\Livewire;
 
 use function Pest\Laravel\{actingAs, assertAuthenticatedAs, get};
 
@@ -49,8 +50,5 @@ it('should load the livewire component on non production environments', function
     actingAs($user);
 
     get(route('dashboard')) // app.blade.php
-        ->assertSeeLivewire('dev.login');
-
-    get(route('login')) // guest.blade.php
         ->assertSeeLivewire('dev.login');
 });

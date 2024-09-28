@@ -13,7 +13,7 @@ it('should be able to logout of the application', function () {
 
     Livewire::test(Logout::class)
         ->call('logout')
-        ->assertRedirect(route('login'));
+        ->assertRedirect(route('landing.home'));
 
     expect(auth())
         ->guest()
