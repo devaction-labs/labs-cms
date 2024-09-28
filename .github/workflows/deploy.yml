@@ -75,7 +75,7 @@ jobs:
         run: vendor/bin/pest --parallel
 
   start-deploy:
-    if: ${{ needs.ci-cd-deploy.result == 'success' && (github.event.pull_request.base.ref == 'master') }}
+    if: ${{ needs.ci-cd-deploy.result == 'success' && (github.event.pull_request.base.ref == 'main') }}
     needs: [ ci-cd-deploy ]
     runs-on: ubuntu-latest
     steps:
