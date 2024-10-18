@@ -12,7 +12,7 @@ Route::get('/', Home::class)->name('landing.home');
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('auth.register');
 Route::get('/email-validation', EmailValidation::class)->middleware('auth')->name('auth.email-validation');
-Route::get('/logout', fn () => auth()->logout());
+Route::get('/logout', static fn () => auth()->logout());
 Route::get('/password/recovery', Password\Recovery::class)->name('password.recovery');
 Route::get('/password/reset', Password\Reset::class)->name('password.reset');
 //endregion
