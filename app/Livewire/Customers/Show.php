@@ -12,8 +12,6 @@ class Show extends Component
 
     public string $tab = 'opportunities';
 
-    public $personalTab = 'personal-contact-info-tab';
-
     public function mount(): void
     {
         abort_unless(in_array($this->tab, ['notes', 'tasks', 'opportunities']), 404);
