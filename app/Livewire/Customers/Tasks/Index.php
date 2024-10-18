@@ -13,6 +13,11 @@ class Index extends Component
 {
     public Customer $customer;
 
+    public function mount(Customer $customer): void
+    {
+        $this->customer = $customer;
+    }
+
     #[On(['task::created', 'task::updated', 'task::deleted'])]
     public function render(): View
     {
@@ -20,7 +25,7 @@ class Index extends Component
     }
 
     #[Computed]
-    public function notDoneTasks()
+    public function notDoneTasks(): mixed
     {
         return $this->customer->tasks()->notDone()
             ->orderBy('sort_order')
@@ -28,7 +33,7 @@ class Index extends Component
     }
 
     #[Computed]
-    public function doneTasks()
+    public function doneTasks(): mixed
     {
         return $this->customer->tasks()->done()->get();
     }
@@ -42,7 +47,7 @@ class Index extends Component
     {
         Task::whereId($id)
             ->when(
-                $status == 'done',
+                $status === 'done',
                 fn (Builder $q) => $q->update(['done_at' => now()]),
                 fn (Builder $q) => $q->update(['done_at' => null])
             );
@@ -52,5 +57,4 @@ class Index extends Component
     {
         Task::whereId($id)->delete();
     }
-
 }
