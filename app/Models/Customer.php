@@ -23,6 +23,9 @@ class Customer extends Model
     use HasSearch;
     use SoftDeletes;
 
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
     public function company(): HasOne
     {
         return $this->hasOne(Company::class);

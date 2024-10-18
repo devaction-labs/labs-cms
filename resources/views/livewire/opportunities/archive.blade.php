@@ -4,7 +4,7 @@
          separator>
 
     <x-slot:actions>
-        <x-button label="Hum... no" @click="$wire.opportunitiesArchive = false" />
+        <x-button label="Hum... no" @click="$wire.modal = false" />
         <x-button label="Yes, I am" class="btn-primary" wire:click="archive" />
     </x-slot:actions>
 </x-modal>
