@@ -21,7 +21,7 @@
     <x-slot:sidebar
         drawer="main-drawer"
         collapsible
-        class="pt-3 bg-neutral text-white"
+        class="pt-3 bg-neutral lg:bg-neutral"
         collapse-text="{{ version() }}"
         style="height: 100vh; overflow-y: auto;"
     >
