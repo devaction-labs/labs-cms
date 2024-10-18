@@ -23,3 +23,9 @@ php:
 #  - id: <plugin.id> #(plugin id can be found at https://plugins.jetbrains.com)
 #Specify Qodana linter for analysis (Applied in CI/CD pipeline)
 linter: jetbrains/qodana-php:latest
+version: "1.0"
+linter: jetbrains/qodana-jvm:2024.1
+profile:
+  name: qodana.recommended
+include:
+  - name: CheckDependencyLicenses
