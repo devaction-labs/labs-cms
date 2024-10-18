@@ -14,18 +14,23 @@ class UsersSeeder extends Seeder
         $admin = User::factory()
             ->withPermission(Can::BE_AN_ADMIN)
             ->create([
-                'name'     => 'Admin do CRM',
-                'email'    => 'admin@crm.com',
+                'name'     => 'Alex Nogueira',
+                'email'    => 'alex@devaction.com.br',
                 'password' => 'password',
             ]);
 
-        $this->normalUsers();
-        $this->deletedUsers($admin);
-    }
+        User::factory()
+            ->withPermission(Can::BE_AN_ADMIN)
+            ->create([
+                'name'     => 'Carlos Andre',
+                'email'    => 'Carlos Andre',
+                'password' => 'password',
+            ]);
 
-    private function defaultDefinition(): array
-    {
-        return array_merge((new UserFactory())->definition(), ['password' => '$2y$10$Ybe7g6ojOtQLVDmX914YUeCqdpfKmuOkPlA9n0zvH.3HLO0u0PA56']);
+        if (app()->environment('local')) {
+            $this->normalUsers();
+            $this->deletedUsers($admin);
+        }
     }
 
     private function normalUsers(): void
@@ -36,6 +41,11 @@ class UsersSeeder extends Seeder
                 range(1, 50)
             )
         );
+    }
+
+    private function defaultDefinition(): array
+    {
+        return array_merge((new UserFactory())->definition(), ['password' => '$2y$10$Ybe7g6ojOtQLVDmX914YUeCqdpfKmuOkPlA9n0zvH.3HLO0u0PA56']);
     }
 
     private function deletedUsers(User $admin): void

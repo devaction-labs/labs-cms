@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? config('app.name') }}</title>
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.svg') }}" />
 
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/gh/robsontenorio/mary@0.44.2/libs/currency/currency.js"></script>
@@ -21,12 +21,16 @@
     <x-slot:sidebar
         drawer="main-drawer"
         collapsible
-        class="pt-3 bg-neutral text-white"
+        class="pt-3 bg-neutral lg:bg-neutral"
         collapse-text="{{ version() }}"
         style="height: 100vh; overflow-y: auto;"
     >
-        <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">DevAction</div>
-        <div class="display-when-collapsed ml-5 font-black text-4xl text-orange-500">DA</div>
+        <div class="hidden-when-collapsed ml-5 font-black text-4xl text-yellow-500">
+            <x-avatar image="{{ asset('assets/images/favicon.svg') }}" class="!w-10 !rounded-lg" />
+        </div>
+        <div class="display-when-collapsed ml-5 font-black text-4xl text-orange-500">
+            <x-avatar image="{{ asset('assets/images/favicon.svg') }}" class="!w-10 !rounded-lg" />
+        </div>
         <x-menu activate-by-route active-bg-color="bg-neutral-300/10">
             @if($user = auth()->user())
                 <x-list-item :item="$user" sub-value="username" no-separator no-hover

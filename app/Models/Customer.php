@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Traits\Models\HasSearch;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\{Model, Relations\HasMany, SoftDeletes};
+use Illuminate\Database\Eloquent\{Model, Relations\HasMany, Relations\HasOne, SoftDeletes};
 
 /**
  * @property int $id
@@ -26,5 +26,33 @@ class Customer extends Model
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
+    public function company(): HasOne
+    {
+        return $this->hasOne(Company::class);
+    }
+
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function emails(): HasMany
+    {
+        return $this->hasMany(Email::class);
+    }
+
+    public function phones(): HasMany
+    {
+        return $this->hasMany(Phone::class);
+    }
+
+    public function registrations(): HasMany
+    {
+        return $this->hasMany(Registration::class);
+    }
+
+    public function activities(): HasMany
+    {
+        return $this->hasMany(Activity::class);
     }
 }
