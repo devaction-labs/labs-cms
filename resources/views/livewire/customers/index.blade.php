@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     <x-header title="Customers" separator />
 
     <div class="mb-4 flex items-end justify-between">

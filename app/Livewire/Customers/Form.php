@@ -2,12 +2,18 @@
 
 namespace App\Livewire\Customers;
 
+use App\Actions\Anexia\Onboarding\CreateOnboardingAction;
 use App\Models\Customer;
+use Exception;
 use Illuminate\Validation\Rule;
 use Livewire\Form as BaseForm;
+use Log;
+use Mary\Traits\Toast;
 
 class Form extends BaseForm
 {
+    use Toast;
+
     public ?Customer $customer = null;
 
     public string $name = '';
@@ -15,6 +21,16 @@ class Form extends BaseForm
     public string $email = '';
 
     public string $phone = '';
+
+    public string $tenant_name = '';
+
+    public string $tenant_domain = '';
+
+    public string $tenant_slug = '';
+
+    public string $tenant_tax_id = '';
+
+    public string $password = '';
 
     public function rules(): array
     {
@@ -29,23 +45,58 @@ class Form extends BaseForm
     {
         $this->customer = $customer;
 
-        $this->name  = (string)$customer->name;
-        $this->email = (string)$customer->email;
-        $this->phone = (string)$customer->phone;
+        $this->name          = (string)$customer->name;
+        $this->email         = (string)$customer->email;
+        $this->phone         = (string)$customer->phone;
+        $this->tenant_name   = (string)$customer->tenant_name;
+        $this->tenant_domain = (string)$customer->tenant_domain;
+        $this->tenant_slug   = (string)$customer->tenant_slug;
+        $this->tenant_tax_id = (string)$customer->tenant_tax_id;
     }
 
-    public function create(): void
+    public function create(): array
     {
         $this->validate();
 
-        Customer::query()->create([
-            'type'  => 'customer',
-            'name'  => $this->name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-        ]);
+        $password = $this->password;
 
-        $this->reset();
+        try {
+            Customer::query()->create([
+                'name'          => $this->name,
+                'email'         => $this->email,
+                'phone'         => $this->phone,
+                'tenant_name'   => $this->tenant_name,
+                'tenant_domain' => $this->tenant_domain,
+                'tenant_slug'   => $this->tenant_slug,
+                'tenant_tax_id' => $this->tenant_tax_id,
+                'password'      => bcrypt($password),
+            ]);
+
+            $response = (new CreateOnboardingAction())->execute(
+                $this->name,
+                $this->email,
+                $password,
+                $this->tenant_name,
+                $this->tenant_domain,
+                $this->tenant_slug,
+                $this->tenant_tax_id
+            );
+
+            $this->reset();
+
+            return [
+                'status'  => 'success',
+                'message' => $response['message'],
+            ];
+
+        } catch (Exception $e) {
+            Log::info('Error: ' . $e->getMessage());
+
+            return [
+                'status'  => 'error',
+                'message' => 'Não foi possível registrar o cliente no sistema externo: ' . $e->getMessage(),
+            ];
+        }
     }
 
     public function update(): void

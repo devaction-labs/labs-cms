@@ -5,9 +5,12 @@ namespace App\Livewire\Customers;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\{On};
 use Livewire\Component;
+use Mary\Traits\Toast;
 
 class Create extends Component
 {
+    use Toast;
+
     public Form $form;
 
     public bool $customerCreate = false;
@@ -26,9 +29,10 @@ class Create extends Component
 
     public function save(): void
     {
-        $this->form->create();
+        $response = $this->form->create();
 
         $this->customerCreate = false;
+        $this->info($response['message']);
         $this->dispatch('customer::reload')->to('customers.index');
     }
 }

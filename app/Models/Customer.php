@@ -16,6 +16,10 @@ use Illuminate\Database\Eloquent\{Model, Relations\HasMany, Relations\HasOne, So
  * @property string $state
  * @property string $zip
  * @property string $country
+ * @property string $tenant_name
+ * @property string $tenant_domain
+ * @property string $tenant_slug
+ * @property string $tenant_tax_id
  */
 class Customer extends Model
 {

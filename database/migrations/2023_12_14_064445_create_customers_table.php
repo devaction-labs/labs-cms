@@ -12,6 +12,11 @@ return new class() extends Migration {
             $table->string('type')->default('customer');
             $table->string('name', 200);
             $table->string('email', 200);
+            $table->string('password', 200)->nullable();
+            $table->string('tenant_name', 200)->unique()->nullable();
+            $table->string('tenant_domain', 200)->unique()->nullable();
+            $table->string('tenant_slug', 200)->unique()->nullable();
+            $table->string('tenant_tax_id', 200)->unique()->nullable();
             $table->string('phone', 20)->unique()->nullable();
             $table->string('linkedin', 200)->nullable();
             $table->string('facebook', 200)->nullable();

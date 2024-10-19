@@ -34,5 +34,12 @@ return [
         'token'    => env('CNJPA_TOKEN'),
         'url_base' => env('CNJPA_URL_BASE'),
     ],
+    'anexia' => [
+        'token'      => env('ANEXIA_TOKEN'),
+        'url_base'   => env('ANEXIA_URL_BASE'),
+        'onboarding' => [
+            'url' => env('ANEXIA_ONBOARDING_ENDPOINT'),
+        ],
+    ],
 
 ];
