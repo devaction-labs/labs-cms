@@ -5,7 +5,9 @@ namespace App\Livewire\Customers;
 use App\Actions\Anexia\Onboarding\CreateOnboardingAction;
 use App\Models\Customer;
 use Illuminate\Validation\Rule;
+use JsonException;
 use Livewire\Form as BaseForm;
+use Saloon\Exceptions\Request\{FatalRequestException, RequestException};
 
 class Form extends BaseForm
 {
@@ -49,6 +51,11 @@ class Form extends BaseForm
         $this->tenant_tax_id = (string)$customer->tenant_tax_id;
     }
 
+    /**
+     * @throws FatalRequestException
+     * @throws RequestException
+     * @throws JsonException
+     */
     public function create(): array
     {
         $this->validate();
