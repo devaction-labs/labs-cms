@@ -4,10 +4,8 @@ namespace App\Livewire\Customers;
 
 use App\Actions\Anexia\Onboarding\CreateOnboardingAction;
 use App\Models\Customer;
-use Exception;
 use Illuminate\Validation\Rule;
 use Livewire\Form as BaseForm;
-use Log;
 
 class Form extends BaseForm
 {
@@ -56,45 +54,34 @@ class Form extends BaseForm
         $this->validate();
 
         $password = $this->password;
+        Customer::query()->create([
+            'name'          => $this->name,
+            'email'         => $this->email,
+            'phone'         => $this->phone,
+            'tenant_name'   => $this->tenant_name,
+            'tenant_domain' => $this->tenant_domain,
+            'tenant_slug'   => $this->tenant_slug,
+            'tenant_tax_id' => $this->tenant_tax_id,
+            'password'      => bcrypt($password),
+            'status'        => 'pending',
+        ]);
 
-        try {
-            Customer::query()->create([
-                'name'          => $this->name,
-                'email'         => $this->email,
-                'phone'         => $this->phone,
-                'tenant_name'   => $this->tenant_name,
-                'tenant_domain' => $this->tenant_domain,
-                'tenant_slug'   => $this->tenant_slug,
-                'tenant_tax_id' => $this->tenant_tax_id,
-                'password'      => bcrypt($password),
-                'status'        => 'pending',
-            ]);
+        $response = (new CreateOnboardingAction())->execute(
+            $this->name,
+            $this->email,
+            $password,
+            $this->tenant_name,
+            $this->tenant_domain,
+            $this->tenant_slug,
+            $this->tenant_tax_id
+        );
 
-            $response = (new CreateOnboardingAction())->execute(
-                $this->name,
-                $this->email,
-                $password,
-                $this->tenant_name,
-                $this->tenant_domain,
-                $this->tenant_slug,
-                $this->tenant_tax_id
-            );
+        $this->reset();
 
-            $this->reset();
-
-            return [
-                'status'  => 'success',
-                'message' => $response['message'],
-            ];
-
-        } catch (Exception $e) {
-            Log::info('Error: ' . $e->getMessage());
-
-            return [
-                'status'  => 'error',
-                'message' => 'Não foi possível registrar o cliente no sistema externo: ' . $e->getMessage(),
-            ];
-        }
+        return [
+            'status'  => 'success',
+            'message' => $response['message'],
+        ];
     }
 
     public function update(): void
