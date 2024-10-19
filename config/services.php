@@ -41,5 +41,8 @@ return [
             'url' => env('ANEXIA_ONBOARDING_ENDPOINT'),
         ],
     ],
+    'grok' => [
+        'token_webhook' => env('WEBHOOK_CLIENT_SECRET'),
+    ],
 
 ];

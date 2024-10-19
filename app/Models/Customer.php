@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\{Model, Relations\HasMany, Relations\HasOne, So
  * @property string $tenant_domain
  * @property string $tenant_slug
  * @property string $tenant_tax_id
+ * @property string $status
  */
 class Customer extends Model
 {

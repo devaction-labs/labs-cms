@@ -31,6 +31,7 @@ return new class() extends Migration {
             $table->string('gender')->nullable();
             $table->string('company', 200)->nullable();
             $table->string('position', 200)->nullable();
+            $table->string('status', 60)->default('pending');
             $table->timestamps();
             $table->softDeletes();
         });

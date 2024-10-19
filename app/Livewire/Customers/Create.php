@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Customers;
 
+use Exception;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\{On};
 use Livewire\Component;
@@ -29,10 +30,15 @@ class Create extends Component
 
     public function save(): void
     {
-        $response = $this->form->create();
+        try {
+            $response = $this->form->create();
+
+            $this->info($response['message']);
+        } catch (Exception $e) {
+            $this->addError('form.onboarding', 'Não foi possível registrar o cliente no sistema externo: ' . $e->getMessage());
+        }
 
         $this->customerCreate = false;
-        $this->info($response['message']);
         $this->dispatch('customer::reload')->to('customers.index');
     }
 }

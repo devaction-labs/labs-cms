@@ -15,6 +15,9 @@ Route::get('/email-validation', EmailValidation::class)->middleware('auth')->nam
 Route::get('/logout', static fn () => auth()->logout());
 Route::get('/password/recovery', Password\Recovery::class)->name('password.recovery');
 Route::get('/password/reset', Password\Reset::class)->name('password.reset');
+
+//region Onboarding
+Route::webhooks('/webhooks/onboarding', 'grok_onboarding');
 //endregion
 
 //region Authenticated
@@ -38,5 +41,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/users', Admin\Users\Index::class)->name('admin.users');
     });
     //endregion
+
 });
 //endregion

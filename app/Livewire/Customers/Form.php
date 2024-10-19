@@ -8,12 +8,9 @@ use Exception;
 use Illuminate\Validation\Rule;
 use Livewire\Form as BaseForm;
 use Log;
-use Mary\Traits\Toast;
 
 class Form extends BaseForm
 {
-    use Toast;
-
     public ?Customer $customer = null;
 
     public string $name = '';
@@ -70,6 +67,7 @@ class Form extends BaseForm
                 'tenant_slug'   => $this->tenant_slug,
                 'tenant_tax_id' => $this->tenant_tax_id,
                 'password'      => bcrypt($password),
+                'status'        => 'pending',
             ]);
 
             $response = (new CreateOnboardingAction())->execute(
