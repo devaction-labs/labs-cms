@@ -45,6 +45,10 @@
         <x-table.th :$header name="email" />
         @endscope
 
+        @scope('cell_status', $header)
+        <x-status.onboarded :status="$header->status" />
+        @endscope
+
         @scope('actions', $customer)
         <div class="flex items-center space-x-2">
             <a
