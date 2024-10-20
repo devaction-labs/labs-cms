@@ -26,6 +26,7 @@ class AnexiaConnector extends Connector
     {
         return [
             'Authorization' => 'Bearer ' . $this->convertToString(config('services.anexia.token')),
+            'Accept'        => 'application/json',
         ];
     }
 
