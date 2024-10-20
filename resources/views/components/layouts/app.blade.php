@@ -1,4 +1,4 @@
-@php use App\Enum\Can; @endphp
+@php use App\Enums\Can; @endphp
     <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

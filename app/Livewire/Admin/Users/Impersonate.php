@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Admin\Users;
 
-use App\Enum\Can;
+use App\Enums\Can;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use RuntimeException;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Enum\Can;
+use App\Enums\Can;
 use App\Livewire\Admin;
 use App\Models\{Permission, User};
 use Illuminate\Pagination\LengthAwarePaginator;

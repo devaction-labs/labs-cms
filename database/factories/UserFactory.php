@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enum\Can;
+use App\Enums\Can;
 use App\Models\{User};
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -45,16 +45,16 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function admin(): static
-    {
-        return $this->afterCreating(fn (User $user) => $user->givePermissionTo(Can::BE_AN_ADMIN));
-    }
-
     public function deleted(): static
     {
         return $this->state(fn (array $attributes) => [
             'deleted_at' => now(),
             'deleted_by' => User::factory()->admin(),
         ]);
+    }
+
+    public function admin(): static
+    {
+        return $this->afterCreating(fn (User $user) => $user->givePermissionTo(Can::BE_AN_ADMIN));
     }
 }

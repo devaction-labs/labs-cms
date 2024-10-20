@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     <x-header title="Customers" separator />
 
     <div class="mb-4 flex items-end justify-between">
@@ -38,6 +43,10 @@
 
         @scope('header_email', $header)
         <x-table.th :$header name="email" />
+        @endscope
+
+        @scope('cell_status', $header)
+        <x-status.onboarded :status="$header->status" />
         @endscope
 
         @scope('actions', $customer)
