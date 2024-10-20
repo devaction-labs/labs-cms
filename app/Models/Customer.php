@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\{Model, Relations\HasMany, Relations\HasOne, So
  * @property string $tenant_slug
  * @property string $tenant_tax_id
  * @property string $status
+ * @property ?string $tenant_id_external
+ * @property ?string $user_id_external
  */
 class Customer extends Model
 {

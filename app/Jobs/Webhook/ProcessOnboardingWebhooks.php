@@ -38,7 +38,11 @@ class ProcessOnboardingWebhooks extends ProcessWebhookJob
             return;
         }
 
-        $customer->update(['status' => StatusEnum::ONBOARDING_COMPLETED->value]);
+        $customer->update([
+            'status'             => StatusEnum::ONBOARDING_COMPLETED->value,
+            'tenant_id_external' => $userData['tenant_id'],
+            'user_id_external'   => $userData['id'],
+        ]);
 
         Log::info('Status do cliente atualizado para created.', [
             'customer_id' => $customer->id,
