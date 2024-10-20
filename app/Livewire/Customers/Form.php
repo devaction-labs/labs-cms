@@ -3,6 +3,7 @@
 namespace App\Livewire\Customers;
 
 use App\Actions\Anexia\Onboarding\CreateOnboardingAction;
+use App\Enums\Onboarding\StatusEnum;
 use App\Models\Customer;
 use Illuminate\Validation\Rule;
 use JsonException;
@@ -70,7 +71,7 @@ class Form extends BaseForm
             'tenant_slug'   => $this->tenant_slug,
             'tenant_tax_id' => $this->tenant_tax_id,
             'password'      => bcrypt($password),
-            'status'        => 'pending',
+            'status'        => StatusEnum::ONBOARDING_PENDING->value,
         ]);
 
         $response = (new CreateOnboardingAction())->execute(

@@ -1,6 +1,6 @@
 <?php
 
-use App\Enum\Can;
+use App\Enums\Can;
 use App\Livewire\Auth\{EmailValidation, Login, Password, Register};
 use App\Livewire\{Admin, Customers, Landing\Page\Home, Opportunities, Welcome};
 use Illuminate\Support\Facades\Route;

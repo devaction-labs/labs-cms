@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Webhook;
 
+use App\Enums\Onboarding\StatusEnum;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Log;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob;
@@ -12,7 +13,14 @@ class ProcessOnboardingWebhooks extends ProcessWebhookJob
     {
         $payload = $this->webhookCall->payload;
 
-        // Verifica se é o evento correto
+        if (!isset($payload['event'])) {
+            Log::warning('Evento não encontrado no payload.', [
+                'payload' => $payload,
+            ]);
+
+            return;
+        }
+
         if ($payload['event'] === 'company.registered') {
             $this->processUserRegistered($payload['user']);
         }
@@ -20,7 +28,7 @@ class ProcessOnboardingWebhooks extends ProcessWebhookJob
 
     private function processUserRegistered(array $userData): void
     {
-        $customer = Customer::where('email', $userData['email'])->first();
+        $customer = Customer::query()->where('email', $userData['email'])->first();
 
         if (!$customer) {
             Log::warning('Cliente não encontrado para atualizar o status.', [
@@ -30,7 +38,8 @@ class ProcessOnboardingWebhooks extends ProcessWebhookJob
             return;
         }
 
-        $customer->update(['status' => 'created']);
+        $customer->update(['status' => StatusEnum::ONBOARDING_COMPLETED->value]);
+
         Log::info('Status do cliente atualizado para created.', [
             'customer_id' => $customer->id,
             'email'       => $customer->email,
