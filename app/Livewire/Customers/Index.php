@@ -39,6 +39,7 @@ class Index extends Component
             Header::make('id', '#'),
             Header::make('name', 'Name'),
             Header::make('email', 'Email'),
+            Header::make('status', 'Onboarding'),
         ];
     }
 }
