@@ -16,7 +16,7 @@ class UsersSeeder extends Seeder
             ->create([
                 'name'     => 'Alex Nogueira',
                 'email'    => 'alex@devaction.com.br',
-                'password' => 'password',
+                'password' => 'Bruna@@2012**',
             ]);
 
         User::factory()
@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
             ->create([
                 'name'     => 'Carlos Andre',
                 'email'    => 'Carlos Andre',
-                'password' => 'password',
+                'password' => 'CarlosAndre@@2012**',
             ]);
 
         if (app()->environment('local')) {
