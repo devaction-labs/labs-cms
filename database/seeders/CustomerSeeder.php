@@ -9,6 +9,8 @@ class CustomerSeeder extends Seeder
 {
     public function run(): void
     {
-        Customer::factory()->count(3)->create();
+        if (app()->environment('local')) {
+            Customer::factory()->count(3)->create();
+        }
     }
 }
