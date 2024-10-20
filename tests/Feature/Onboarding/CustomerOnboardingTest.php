@@ -23,11 +23,10 @@ test('check if the create method creates a new customer and does the onboarding'
                 'updated_at' => now()->toISOString(),
             ],
             'event'   => 'company.registered',
-            'message' => 'Cliente criado com sucesso!', // Adicionando a chave "message"
-        ], 200), // 200 é o status HTTP de sucesso
+            'message' => 'Cliente criado com sucesso!',
+        ], 200),
     ]);
 
-    // Agora execute o teste normalmente
     Livewire::test(Create::class)
         ->set('form.name', 'Alex Nogueira')
         ->set('form.email', 'alex@devaction.com.br')
@@ -41,7 +40,6 @@ test('check if the create method creates a new customer and does the onboarding'
         ->assertDispatched('customer::reload')
         ->assertHasNoErrors();
 
-    // Verificar se o cliente foi criado na base de dados
     assertDatabaseHas('customers', [
         'email' => 'alex@devaction.com.br',
         'name'  => 'Alex Nogueira',
