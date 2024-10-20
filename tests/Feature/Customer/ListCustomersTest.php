@@ -38,6 +38,7 @@ test('check the table format', function () {
             ['key' => 'id', 'label' => '#', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
             ['key' => 'name', 'label' => 'Name', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
             ['key' => 'email', 'label' => 'Email', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
+            ['key' => 'status', 'label' => 'Onboarding', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
         ]);
 });
 

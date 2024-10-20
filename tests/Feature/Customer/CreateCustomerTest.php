@@ -1,13 +1,31 @@
 <?php
 
+use App\Http\Integrations\Anexia\Requests\CreateOnboardingRequest;
 use App\Livewire\Customers;
 use App\Models\{Customer, User};
 
 use function Pest\Laravel\{actingAs, assertDatabaseHas};
 
+use Saloon\Http\Faking\MockResponse;
+
 beforeEach(function () {
     $user = User::factory()->create();
     actingAs($user);
+
+    Saloon::fake([
+        CreateOnboardingRequest::class => MockResponse::make([
+            'user' => [
+                'id'         => '01jak0p9ek6jmk8378htyc22kq',
+                'name'       => 'John Doe',
+                'email'      => 'joe@doe.com',
+                'tenant_id'  => 'tenant123',
+                'created_at' => now()->toISOString(),
+                'updated_at' => now()->toISOString(),
+            ],
+            'event'   => 'company.registered',
+            'message' => 'Cliente criado com sucesso!',
+        ], 200),
+    ]);
 });
 
 it('should be able to create a customer', function () {

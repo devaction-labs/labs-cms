@@ -1,6 +1,6 @@
 <?php
 
-use App\Enum\Can;
+use App\Enums\Can;
 use App\Models\{Permission, User};
 use Database\Seeders\{PermissionSeeder, UsersSeeder};
 

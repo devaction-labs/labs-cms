@@ -1,4 +1,4 @@
-@php use App\Enum\Can; @endphp
+@php use App\Enums\Can; @endphp
 <div>
     <x-header title="Users" separator />
 

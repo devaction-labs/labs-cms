@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Admin\Users;
 
-use App\Enum\Can;
+use App\Enums\Can;
 use App\Models\{Permission, User};
 use App\Support\Table\Header;
 use App\Traits\Livewire\HasTable;

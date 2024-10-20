@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enum\Can;
+use App\Enums\Can;
 use App\Models\User;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
