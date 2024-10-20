@@ -10,7 +10,8 @@ use Saloon\Http\Faking\MockResponse;
 use Saloon\Laravel\Facades\Saloon;
 
 test('check if the create method creates a new customer and does the onboarding', function () {
-    // Configurar o mock do Saloon com um array de mapeamento
+    Http::fake();
+
     Saloon::fake([
         CreateOnboardingRequest::class => MockResponse::make([
             'user' => [
