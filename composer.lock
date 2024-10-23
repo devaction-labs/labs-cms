@@ -1988,16 +1988,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.28.1",
+            "version": "v11.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "3ef5c8a85b4c598d5ffaf98afd72f6a5d6a0be2c"
+                "reference": "425054512c362835ba9c0307561973c8eeac7385"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/3ef5c8a85b4c598d5ffaf98afd72f6a5d6a0be2c",
-                "reference": "3ef5c8a85b4c598d5ffaf98afd72f6a5d6a0be2c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/425054512c362835ba9c0307561973c8eeac7385",
+                "reference": "425054512c362835ba9c0307561973c8eeac7385",
                 "shasum": ""
             },
             "require": {
@@ -2193,7 +2193,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-10-16T16:32:21+00:00"
+            "time": "2024-10-22T14:13:31+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -7895,16 +7895,16 @@
         },
         {
             "name": "christophrumpel/missing-livewire-assertions",
-            "version": "v2.8.0",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/christophrumpel/missing-livewire-assertions.git",
-                "reference": "3075093b0e5229bccfb768f32ce5f42736d1c1f5"
+                "reference": "04e2b3fad0224273f923ea35140bf96ba0be0e19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/christophrumpel/missing-livewire-assertions/zipball/3075093b0e5229bccfb768f32ce5f42736d1c1f5",
-                "reference": "3075093b0e5229bccfb768f32ce5f42736d1c1f5",
+                "url": "https://api.github.com/repos/christophrumpel/missing-livewire-assertions/zipball/04e2b3fad0224273f923ea35140bf96ba0be0e19",
+                "reference": "04e2b3fad0224273f923ea35140bf96ba0be0e19",
                 "shasum": ""
             },
             "require": {
@@ -7954,9 +7954,9 @@
             ],
             "support": {
                 "issues": "https://github.com/christophrumpel/missing-livewire-assertions/issues",
-                "source": "https://github.com/christophrumpel/missing-livewire-assertions/tree/v2.8.0"
+                "source": "https://github.com/christophrumpel/missing-livewire-assertions/tree/v2.9.0"
             },
-            "time": "2024-04-11T15:23:28+00:00"
+            "time": "2024-10-22T06:51:48+00:00"
         },
         {
             "name": "fakerphp/faker",
